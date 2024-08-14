@@ -7,7 +7,7 @@ export default function Hero(){
 <div>
 <h1 className="font-bold text-5xl">Enjoy Our <br />
 Delicious Meal</h1>
-<h3>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. <br /> Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</h3>
+<h3>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. <br /> Aliqu diam amet diam etos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</h3>
 </div>
 <div>
     <Image className="mt-10 animate-spin-slow" src={hero} alt="This is img of platter" height={680} width={500} ></Image>
