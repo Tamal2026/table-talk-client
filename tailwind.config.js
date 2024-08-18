@@ -10,7 +10,7 @@ module.exports = {
   ],
   theme: {
     extend: {  animation: {
-      'spin-slow': 'spin 20s linear infinite',
+      'spin-slow': 'spin 36s linear infinite',
     },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -19,5 +19,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui'),],
 };
