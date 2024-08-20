@@ -56,7 +56,7 @@ export default function About() {
           <h2 className="text-xl md:text-2xl flex items-center mb-4">
             Welcome to{" "}
             <span className="ml-2 flex items-center">
-              <FaUtensils className="text-blue-500 ml-1" /> Table Talk
+              <FaUtensils className="text-blue-500 ml-1" />  Table Talk
             </span>
           </h2>
           <p className="text-base md:text-lg leading-relaxed">
@@ -86,7 +86,7 @@ export default function About() {
             </div>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 mx-auto">
-            <button className="bg-sky-500 px-4 py-2 my-3 text-white text-lg md:text-xl font-bold w-full">
+            <button className="bg-sky-500 px-4 py-2 my-3 text-white text-lg md:text-xl font-bold w-full mt-10">
               Read More
             </button>
           </div>
