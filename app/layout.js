@@ -4,6 +4,7 @@ import Navbar from "@/components/Nabar/page";
 import Hero from "@/components/Hero/page";
 import About from "@/components/About/page";
 import Contact from "@/components/Contact/page";
+import Service from "@/components/Service/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <Navbar></Navbar>
         <Hero></Hero>
         <About></About>
+        <Service></Service>
         <Contact></Contact>
         {children}
       </body>
