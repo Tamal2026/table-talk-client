@@ -24,7 +24,7 @@ export default function Navbar() {
             <Link href="/about">ABOUT</Link>
           </li>
           <li>
-            <Link href="/contact">CONTACT</Link> 
+            <Link href="/contact"></Link> 
           </li>
           <li>
             <Link href="/gallery">GALLERY</Link>

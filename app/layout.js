@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/page";
 import About from "@/components/About/page";
 import Contact from "@/components/Contact/page";
 import Service from "@/components/Service/page";
+import BookTable from "@/components/BookTable/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <Navbar></Navbar>
         <Hero></Hero>
         <About></About>
+        <BookTable></BookTable>
         <Service></Service>
         <Contact></Contact>
         {children}
