@@ -6,6 +6,8 @@ import About from "@/components/About/page";
 import Contact from "@/components/Contact/page";
 import Service from "@/components/Service/page";
 import BookTable from "@/components/BookTable/page";
+import FoodMenu from "@/components/FoodMenu/page";
+import TeamMember from "@/components/TeamMember/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar></Navbar>
         <Hero></Hero>
+        <TeamMember></TeamMember>
+        <FoodMenu></FoodMenu>
         <About></About>
         <BookTable></BookTable>
         <Service></Service>
