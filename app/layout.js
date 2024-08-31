@@ -1,13 +1,13 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Nabar/page";
-import Hero from "@/components/Hero/page";
-import About from "@/components/About/page";
-import Contact from "@/components/Contact/page";
-import Service from "@/components/Service/page";
-import BookTable from "@/components/BookTable/page";
-import FoodMenu from "@/components/FoodMenu/page";
-import TeamMember from "@/components/TeamMember/page";
+import Navbar from "@/app/Nabar/page";
+import Hero from "@/app/Hero/page";
+import About from "@/app/About/page";
+import Contact from "@/app/Contact/page";
+import Service from "@/app/Service/page";
+import BookTable from "@/app/BookTable/page";
+import FoodMenu from "@/app/FoodMenu/page";
+import TeamMember from "@/app/TeamMember/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,14 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar></Navbar>
+        <Navbar></Navbar>  
         <Hero></Hero>
-        <TeamMember></TeamMember>
         <FoodMenu></FoodMenu>
-        <About></About>
-        <BookTable></BookTable>
-        <Service></Service>
-        <Contact></Contact>
         {children}
       </body>
     </html>
