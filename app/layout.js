@@ -21,8 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar></Navbar>  
-        <Hero></Hero>
-        <FoodMenu></FoodMenu>
+       
         {children}
       </body>
     </html>

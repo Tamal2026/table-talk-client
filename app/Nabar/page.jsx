@@ -1,8 +1,37 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/images/logo.png";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathName = usePathname()
+const links =
+[
+  {
+    title:"About",
+    path:"/About"
+  },
+  {
+    title:"Service",
+    path:"/Service"
+  },
+  {
+    title:"Contact",
+    path:"/Contact"
+  },
+  {
+    title:"Gallery",
+    path:"/Gallery"
+  },
+  {
+    title:"Menu",
+    path:"/FoodMenu"
+  },
+]
+
+
   return (
     <div className="navbar-container flex justify-between px-10 pt-4 mx-auto max-w-screen-2xl bg-black">
       <div className="logo">
@@ -16,25 +45,9 @@ export default function Navbar() {
       </div>
       <div className="Navbar-list flex justify-between items-center">
         <ul className="flex space-x-6 list-none text-white">
-          <li>
-            <Link href="/">HOME</Link>
-          </li>
-
-          <li>
-            <Link href="/FoodMenu">MENU</Link>
-          </li>
-          <li>
-            <Link href="/About">ABOUT</Link>
-          </li>
-          <li>
-            <Link href="Contact">CONTACT</Link>
-          </li>
-          <li>
-            <Link href="/Gallery">GALLERY</Link>
-          </li>
-          <li>
-            <Link href="/Service">SERVICE</Link>
-          </li>
+        {
+          links?.map((link=><Link className={`${pathName === link.path && "bg-red-500"}`} key={link.path} href={link.path}>{link.title}</Link>))
+        }
         </ul>
       </div>
     </div>
