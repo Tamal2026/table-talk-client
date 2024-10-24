@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Classic Pancakes",
+    "price": 5.99,
+    "category": "Breakfast",
+    "short_desc": "Fluffy pancakes with syrup",
+    "long_desc": "Delicious fluffy pancakes served with maple syrup and a side of fresh berries. Perfect for a sweet start to your day.",
+    "img": "https://i.ibb.co/2cGFNnQ/breakfast-0.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Avocado Toast",
+    "price": 7.99,
+    "category": "Breakfast",
+    "short_desc": "Toasted bread with avocado spread",
+    "long_desc": "Crunchy toasted sourdough bread topped with creamy avocado, a sprinkle of salt, pepper, and a dash of lemon juice.",
+    "img": "https://i.ibb.co/N39ttkj/breakfast-2.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Omelette",
+    "price": 6.99,
+    "category": "Breakfast",
+    "short_desc": "Fluffy omelette with cheese",
+    "long_desc": "A fluffy omelette filled with cheddar cheese, diced tomatoes, and spinach. Served with a side of toast and hash browns.",
+    "img": "https://i.ibb.co/YZHqpb1/breakfast-3.jpg",
+    "cuisine": "French"
+  },
+  {
+    "name": "Smoothie Bowl",
+    "price": 8.99,
+    "category": "Breakfast",
+    "short_desc": "Fresh fruit smoothie bowl",
+    "long_desc": "A refreshing bowl of blended fruit smoothie topped with granola, fresh berries, banana slices, and a drizzle of honey.",
+    "img": "https://i.ibb.co/Tgs9CsF/breakfast-4.webp",
+    "cuisine": "American"
+  },
+  {
+    "name": "Bagel with Cream Cheese",
+    "price": 4.99,
+    "category": "Breakfast",
+    "short_desc": "Toasted bagel with cream cheese",
+    "long_desc": "A freshly toasted bagel with a generous spread of cream cheese. Choose from plain, sesame, or everything bagels.",
+    "img": "https://i.ibb.co/WKdNDgq/breakfast-5.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "French Toast",
+    "price": 7.49,
+    "category": "Breakfast",
+    "short_desc": "Cinnamon French toast",
+    "long_desc": "Golden brown French toast slices dusted with cinnamon sugar, served with maple syrup and a side of fresh fruit.",
+    "img": "https://i.ibb.co/Vm882zY/breakfast-6.jpg",
+    "cuisine": "French"
+  },
+  {
+    "name": "Breakfast Burrito",
+    "price": 9.99,
+    "category": "Breakfast",
+    "short_desc": "Egg and sausage burrito",
+    "long_desc": "A hearty burrito filled with scrambled eggs, sausage, cheddar cheese, and salsa. Served with a side of sour cream.",
+    "img": "https://i.ibb.co/FX8VfLY/breakfast-7.jpg",
+    "cuisine": "Mexican"
+  },
+  {
+    "name": "Granola Parfait",
+    "price": 5.49,
+    "category": "Breakfast",
+    "short_desc": "Yogurt parfait with granola",
+    "long_desc": "Layers of creamy yogurt, crunchy granola, and fresh berries. A light and healthy way to start your day.",
+    "img": "https://i.ibb.co/2ytVYt3/yogurt-parfait-with-fresh-fruits-rustic-wooden-table-1268-27790.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Caesar Salad",
+    "price": 8.99,
+    "category": "Lunch",
+    "short_desc": "Fresh Caesar salad",
+    "long_desc": "A classic Caesar salad with romaine lettuce, croutons, Parmesan cheese, and Caesar dressing. Add grilled chicken for a heartier meal.",
+    "img": "https://i.ibb.co/64jrYR1/lunch-0-ezgif-com-webp-to-jpg-converter.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "Grilled Chicken Burger",
+    "price": 9.99,
+    "category": "Lunch",
+    "short_desc": "Grilled chicken on a brioche bun",
+    "long_desc": "Juicy grilled chicken breast served on a brioche bun with lettuce, tomato, and a tangy aioli sauce. Comes with a side of fries.",
+    "img": "https://i.ibb.co/g9TZfWn/lunch-1.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Margherita Pizza",
+    "price": 11.99,
+    "category": "Lunch",
+    "short_desc": "Classic Margherita pizza",
+    "long_desc": "A simple yet delicious pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves on a thin, crispy crust.",
+    "img": "https://i.ibb.co/1MGP3p6/ai-generated-8023787-640-ezgif-com-webp-to-jpg-converter.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "Chicken Caesar Wrap",
+    "price": 8.49,
+    "category": "Lunch",
+    "short_desc": "Caesar salad wrap with chicken",
+    "long_desc": "A wrap filled with grilled chicken, romaine lettuce, Parmesan cheese, and Caesar dressing. Served with a side of potato chips.",
+    "img": "https://i.ibb.co/Fx8GgFN/lunch-3.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Tomato Basil Soup",
+    "price": 6.99,
+    "category": "Lunch",
+    "short_desc": "Creamy tomato basil soup",
+    "long_desc": "A warm and creamy tomato basil soup served with a side of garlic bread. Perfect for a light and comforting meal.",
+    "img": "https://i.ibb.co/BfxHSNJ/lunch-4.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "BLT Sandwich",
+    "price": 7.99,
+    "category": "Lunch",
+    "short_desc": "Bacon, lettuce, and tomato sandwich",
+    "long_desc": "A classic BLT sandwich with crispy bacon, fresh lettuce, and ripe tomatoes on toasted whole grain bread. Served with a pickle spear.",
+    "img": "https://i.ibb.co/MNxrSmQ/lunch-5.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Tuna Salad",
+    "price": 8.99,
+    "category": "Lunch",
+    "short_desc": "Fresh tuna salad",
+    "long_desc": "A light and refreshing tuna salad made with celery, red onions, and a hint of lemon. Served on a bed of mixed greens.",
+    "img": "https://i.ibb.co/n8zr8Pm/lunch-6.jpg",
+    "cuisine": "American"
+  },
+  {
+    "name": "Vegetable Stir Fry",
+    "price": 10.99,
+    "category": "Lunch",
+    "short_desc": "Mixed vegetables in soy sauce",
+    "long_desc": "A medley of fresh vegetables stir-fried in a savory soy sauce with garlic and ginger. Served with steamed jasmine rice.",
+    "img": "https://i.ibb.co/z4pMzKf/lunch-7.jpg",
+    "cuisine": "Chinese"
+  },
+  {
+    "name": "Fish Tacos",
+    "price": 12.99,
+    "category": "Lunch",
+    "short_desc": "Grilled fish tacos with salsa",
+    "long_desc": "Three soft tacos filled with grilled fish, fresh salsa, shredded cabbage, and a drizzle of lime crema. Served with a side of chips.",
+    "img": "https://i.ibb.co/xMNBtYr/lunch-8.jpg",
+    "cuisine": "Mexican"
+  },
+  {
+    "name": "Spaghetti Bolognese",
+    "price": 12.99,
+    "category": "Dinner",
+    "short_desc": "Classic Italian pasta dish",
+    "long_desc": "Spaghetti topped with a rich and flavorful Bolognese sauce made from ground beef, tomatoes, and Italian herbs. Served with garlic bread.",
+    "img": "https://i.ibb.co/TtF6vB4/dinner-0.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "Steak Frites",
+    "price": 18.99,
+    "category": "Dinner",
+    "short_desc": "Grilled steak with fries",
+    "long_desc": "A succulent grilled steak cooked to your liking, served with a side of crispy French fries and a fresh garden salad.",
+    "img": "https://i.ibb.co/S7M5LLJ/dinner-1.jpg",
+    "cuisine": "French"
+  },
+  {
+    "name": "Sushi Platter",
+    "price": 15.99,
+    "category": "Dinner",
+    "short_desc": "Assorted sushi rolls",
+    "long_desc": "An assortment of fresh sushi rolls including salmon, tuna, and vegetarian options. Served with soy sauce, wasabi, and pickled ginger.",
+    "img": "https://i.ibb.co/GTZY2hg/dinner-2.jpg",
+    "cuisine": "Japanese"
+  },
+  {
+    "name": "Tandoori Chicken",
+    "price": 14.99,
+    "category": "Dinner",
+    "short_desc": "Spicy grilled chicken",
+    "long_desc": "Chicken marinated in a blend of yogurt and spices, then grilled to perfection. Served with naan bread and a side of mint chutney.",
+    "img": "https://i.ibb.co/C1S3n5F/dinner-3.jpg",
+    "cuisine": "Indian"
+  },
+  {
+    "name": "Beef Stroganoff",
+    "price": 13.99,
+    "category": "Dinner",
+    "short_desc": "Beef with creamy mushroom sauce",
+    "long_desc": "Tender strips of beef cooked in a creamy mushroom sauce, served over egg noodles. A comforting and hearty meal.",
+    "img": "https://i.ibb.co/X5K7LW9/dinner-4-ezgif-com-webp-to-jpg-converter.jpg",
+    "cuisine": "Russian"
+  },
+  {
+    "name": "Chicken Alfredo",
+    "price": 11.99,
+    "category": "Dinner",
+    "short_desc": "Creamy chicken pasta",
+    "long_desc": "Fettuccine pasta tossed in a rich Alfredo sauce with grilled chicken and Parmesan cheese. Served with garlic bread.",
+    "img": "https://i.ibb.co/Fxqqc73/dinner-5.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "Shrimp Scampi",
+    "price": 16.99,
+    "category": "Dinner",
+    "short_desc": "Shrimp in garlic butter sauce",
+    "long_desc": "Succulent shrimp sautéed in a garlic butter sauce with a hint of lemon, served over a bed of linguine pasta.",
+    "img": "https://i.ibb.co/zm5DszB/dinner-6.jpg",
+    "cuisine": "Italian"
+  },
+  {
+    "name": "Vegetable Curry",
+    "price": 10.99,
+    "category": "Dinner",
+    "short_desc": "Spicy vegetable curry",
+    "long_desc": "A flavorful curry made with a variety of fresh vegetables, simmered in a rich and spicy sauce. Served with basmati rice.",
+    "img": "https://i.ibb.co/RTBTMvx/dinner-7.jpg",
+    "cuisine": "Indian"
+  },
+  {
+    "name": "BBQ Ribs",
+    "price": 19.99,
+    "category": "Dinner",
+    "short_desc": "Slow-cooked BBQ ribs",
+    "long_desc": "Tender, fall-off-the-bone ribs smothered in a smoky barbecue sauce. Served with coleslaw and cornbread.",
+    "img": "https://i.ibb.co/ZgQgqJG/dinner-8-ezgif-com-webp-to-jpg-converter.jpg",
+    "cuisine": "American"
+  }
+]

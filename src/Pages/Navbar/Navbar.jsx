@@ -1,14 +1,20 @@
 const navOptions = (
     <>
       <li>
-        <a>Item 1</a>
+        <a>Home</a>
       </li>
       <li>
-        <a>Parent</a>
+        <a>About</a>
       
       </li>
       <li>
-        <a>Item 3</a>
+        <a>Services</a>
+      </li>
+      <li>
+        <a>TeamMember</a>
+      </li>
+      <li>
+        <a>Contact</a>
       </li>
     </>
   );
