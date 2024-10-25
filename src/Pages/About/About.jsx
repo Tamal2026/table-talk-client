@@ -1,5 +1,5 @@
 import { FaUtensils } from "react-icons/fa";
-
+import SectionTitle from '../../components/SectionTitle/SectionTitle'
 
 const About = () => {
     return (
@@ -8,7 +8,7 @@ const About = () => {
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div className="w-full h-48 sm:w-72 sm:h-72 flex justify-center items-center rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
-                src="https://i.ibb.co.com/C7sTzhp/hero-removebg-preview-removebg-preview.png"
+                src="https://i.ibb.co.com/vYPVPqF/about-1.jpg"
                 alt="Small img 1"
                 width={300}
                 height={300}
@@ -18,7 +18,7 @@ const About = () => {
   
             <div className="w-full h-48 sm:w-72 sm:h-72 flex justify-center items-center rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
-                src="https://i.ibb.co.com/C7sTzhp/hero-removebg-preview-removebg-preview.png"
+                src="https://i.ibb.co.com/MgHPDcT/about-2.jpg"
                 alt="Medium img 1"
                 width={200}
                 height={200}
@@ -28,7 +28,7 @@ const About = () => {
   
             <div className="w-full h-48 sm:w-72 sm:h-72 flex justify-center items-center rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
-                src="https://i.ibb.co.com/C7sTzhp/hero-removebg-preview-removebg-preview.png"
+                src="https://i.ibb.co.com/mRf4LMS/about-3.jpg"
                 alt="Medium img 2"
                 width={200}
                 height={200}
@@ -38,7 +38,7 @@ const About = () => {
   
             <div className="w-full h-48 sm:w-72 sm:h-72 flex justify-center items-center rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
-                src="https://i.ibb.co.com/C7sTzhp/hero-removebg-preview-removebg-preview.png"
+                src="https://i.ibb.co.com/M7rr0V0/about-4.jpg"
                 alt="Small img 2"
                 width={300}
                 height={300}
@@ -48,13 +48,8 @@ const About = () => {
           </div>
   
           <div className="text-section mt-8 md:mt-0 md:max-w-2xl">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">About Us</h1>
-            <h2 className="text-xl md:text-2xl flex items-center mb-4">
-              Welcome to{" "}
-              <span className="ml-2 flex items-center">
-                <FaUtensils className="text-blue-500 ml-1" />  Table Talk
-              </span>
-            </h2>
+            <SectionTitle subHeading={"About Us"} heading={`Welcome To Table Talk`}></SectionTitle>
+           
             <p className="text-base md:text-lg leading-relaxed">
               At Table Talk, we're passionate about bringing people together over
               delicious food. Whether you're craving a comforting meal, exploring

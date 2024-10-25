@@ -3,15 +3,24 @@
     "name": "Classic Pancakes",
     "price": 5.99,
     "category": "Breakfast",
+    "type":"popular",
     "short_desc": "Fluffy pancakes with syrup",
     "long_desc": "Delicious fluffy pancakes served with maple syrup and a side of fresh berries. Perfect for a sweet start to your day.",
     "img": "https://i.ibb.co/2cGFNnQ/breakfast-0.jpg",
     "cuisine": "American"
   },
   {
+    "category": "Breakfast",
+    "name": "Breakfast Sandwich",
+    "img": "https://i.ibb.co.com/NrJzcDm/Taiwanese-breakfast-sandwich-final-1.jpg",
+    "price": 5.99,
+    "short_desc": "Toasted sandwich with scrambled eggs, cheese, and bacon on a brioche bun."
+  },
+  {
     "name": "Avocado Toast",
     "price": 7.99,
     "category": "Breakfast",
+
     "short_desc": "Toasted bread with avocado spread",
     "long_desc": "Crunchy toasted sourdough bread topped with creamy avocado, a sprinkle of salt, pepper, and a dash of lemon juice.",
     "img": "https://i.ibb.co/N39ttkj/breakfast-2.jpg",
@@ -84,6 +93,7 @@
     "name": "Grilled Chicken Burger",
     "price": 9.99,
     "category": "Lunch",
+    "type":"popular",
     "short_desc": "Grilled chicken on a brioche bun",
     "long_desc": "Juicy grilled chicken breast served on a brioche bun with lettuce, tomato, and a tangy aioli sauce. Comes with a side of fries.",
     "img": "https://i.ibb.co/g9TZfWn/lunch-1.jpg",
@@ -138,6 +148,7 @@
     "name": "Vegetable Stir Fry",
     "price": 10.99,
     "category": "Lunch",
+    "type":"popular",
     "short_desc": "Mixed vegetables in soy sauce",
     "long_desc": "A medley of fresh vegetables stir-fried in a savory soy sauce with garlic and ginger. Served with steamed jasmine rice.",
     "img": "https://i.ibb.co/z4pMzKf/lunch-7.jpg",
@@ -156,6 +167,7 @@
     "name": "Spaghetti Bolognese",
     "price": 12.99,
     "category": "Dinner",
+    "type":"popular",
     "short_desc": "Classic Italian pasta dish",
     "long_desc": "Spaghetti topped with a rich and flavorful Bolognese sauce made from ground beef, tomatoes, and Italian herbs. Served with garlic bread.",
     "img": "https://i.ibb.co/TtF6vB4/dinner-0.jpg",
@@ -165,6 +177,7 @@
     "name": "Steak Frites",
     "price": 18.99,
     "category": "Dinner",
+  
     "short_desc": "Grilled steak with fries",
     "long_desc": "A succulent grilled steak cooked to your liking, served with a side of crispy French fries and a fresh garden salad.",
     "img": "https://i.ibb.co/S7M5LLJ/dinner-1.jpg",
@@ -210,6 +223,7 @@
     "name": "Shrimp Scampi",
     "price": 16.99,
     "category": "Dinner",
+    "type":"popular",
     "short_desc": "Shrimp in garlic butter sauce",
     "long_desc": "Succulent shrimp sautéed in a garlic butter sauce with a hint of lemon, served over a bed of linguine pasta.",
     "img": "https://i.ibb.co/zm5DszB/dinner-6.jpg",
@@ -232,5 +246,49 @@
     "long_desc": "Tender, fall-off-the-bone ribs smothered in a smoky barbecue sauce. Served with coleslaw and cornbread.",
     "img": "https://i.ibb.co/ZgQgqJG/dinner-8-ezgif-com-webp-to-jpg-converter.jpg",
     "cuisine": "American"
+  },
+  {
+    "name": "Chocolate Cake",
+    "price": 4.99,
+    "img": "https://i.ibb.co.com/fNzNgWS/chocolate-cake.jpg",
+    "short_desc": "Rich and moist chocolate cake topped with creamy chocolate frosting.",
+    "category": "dessert"
+  },
+  {
+    "name": "Blueberry Cheesecake",
+    "price": 5.49,
+    "type":"popular",
+    "img": "https://i.ibb.co.com/4NwhS9N/Blueberry-Cheesecake-730px-featured.webp",
+    "short_desc": "Creamy cheesecake with a fresh blueberry topping.",
+    "category": "dessert"
+  },
+  {
+    "name": "Tiramisu",
+    "price": 6.99,
+    "img": "https://i.ibb.co.com/mqrtYdd/tiramisu.jpg",
+    "short_desc": "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cheese.",
+    "category": "dessert"
+  },
+  {
+    "name": "Strawberry Shortcake",
+    "price": 5.29,
+  
+    "img": "https://i.ibb.co.com/ThQBfrg/strawberry-shortcake.jpg",
+    "short_desc": "Fluffy cake topped with whipped cream and fresh strawberries.",
+    "category": "dessert"
+  },
+  {
+    "name": "Macarons",
+    "price": 7.99,
+    "img": "https://i.ibb.co.com/0GG7XnT/macarons-on-top-of-each-other.jpg",
+    "short_desc": "Assorted French macarons in a variety of flavors.",
+    "category": "dessert"
+  },
+  {
+    "name": "Apple Pie",
+    "price": 4.79,
+    "img": "https://i.ibb.co.com/MR7DG53/Apple-pie.jpg",
+    "short_desc": "Classic apple pie with a flaky crust and spiced apple filling.",
+    "category": "dessert"
   }
 ]

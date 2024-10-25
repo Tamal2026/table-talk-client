@@ -1,12 +1,14 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import { FaShoppingCart } from "react-icons/fa";
+
 const MenuItem = ({ item }) => {
-    const { img, price, name, short_desc } = item;  // Destructure properties from item
+    const { img, price, name, short_desc } = item;
 
     return (
-        <div className="flex flex-col md:flex-row items-center gap-4 p-4 border-b border-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105"> {/* Container for the item */}
-            {/* Image */}
+        <div className="flex flex-col md:flex-row items-center gap-4 p-4 border-b border-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105">
+        
+            {/* Image Section */}
             <div className="w-full md:w-32 h-32 overflow-hidden rounded-lg shadow-lg flex-shrink-0">
                 <img 
                     src={img} 
@@ -15,19 +17,28 @@ const MenuItem = ({ item }) => {
                 />
             </div>
 
-            {/* Details */}
+            {/* Content Section */}
             <div className="flex-1">
                 <h1 className="text-xl font-semibold">{name}</h1>
                 <p className="text-sm text-gray-600 mb-2">{short_desc}</p>
                 <h2 className="text-lg font-bold text-orange-500 mb-4">Price: ${price}</h2>
 
-                {/* Add to Cart Button */}
-                <button className="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-orange-600 transition-colors duration-300 relative group overflow-hidden">
-                    Add to Cart
-                    {/* Animation Effect */}
-                    <span className="absolute inset-0 w-full h-0 bg-white opacity-10 group-hover:h-full transition-all duration-300 ease-out"></span>
+                {/* Details Button */}
+                <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-500 transition-colors duration-300">
+                    Details
                 </button>
             </div>
+
+            {/* Add to Cart Icon Button with Modern Animation */}
+            <button className="relative flex items-center justify-center bg-green-500 text-white p-3 rounded-full shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-110 group">
+                <FaShoppingCart className="text-lg relative z-10 transition-transform duration-300 group-hover:scale-125 group-hover:text-green-500" />
+
+                {/* Soft Glow Effect on Hover */}
+                <span className="absolute inset-0 w-full h-full bg-green-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-out"></span>
+
+                {/* Ripple Effect Animation */}
+                <span className="absolute inset-0 w-full h-full rounded-full border-2 border-green-500 opacity-0 group-hover:opacity-100 group-hover:animate-ping"></span>
+            </button>
         </div>
     );
 };
