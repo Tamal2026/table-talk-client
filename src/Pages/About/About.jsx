@@ -1,9 +1,11 @@
 import { FaUtensils } from "react-icons/fa";
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
+import Cover from "../Shared/Cover/Cover";
 
 const About = () => {
     return (
         <>
+        <Cover img={"https://i.ibb.co.com/VDKcncX/about-us.webp"}titleName={"About Us"} short_desc={"Enjoy fresh food and friendly service, whether you dine in or order online. We’re here to serve you!"}></Cover>
         <main className="container flex flex-col md:flex-row justify-normal gap-10 max-w-screen-2xl mx-auto p-4 sm:p-8">
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div className="w-full h-48 sm:w-72 sm:h-72 flex justify-center items-center rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">

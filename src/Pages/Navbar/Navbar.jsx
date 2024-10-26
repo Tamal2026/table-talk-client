@@ -18,6 +18,9 @@ const navOptions = (
       <li>
       <Link to="/contact">Contact</Link>
       </li>
+      <li>
+      <Link to="/orderFood">Order Food</Link>
+      </li>
     </>
   );
   
