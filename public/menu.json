@@ -290,5 +290,47 @@
     "img": "https://i.ibb.co.com/MR7DG53/Apple-pie.jpg",
     "short_desc": "Classic apple pie with a flaky crust and spiced apple filling.",
     "category": "dessert"
+  },
+  {
+    "name": "Classic Lemonade",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "Refreshing lemonade with a hint of mint.",
+    "price": 3.5,
+    "category": "Cold Drinks"
+  },
+  {
+    "name": "Iced Coffee",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "Cold brewed coffee with a touch of vanilla.",
+    "price": 4.0,
+    "category": "Cold Drinks"
+  },
+  {
+    "name": "Green Smoothie",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "A healthy blend of spinach, kale, and apple.",
+    "price": 5.5,
+    "category": "Smoothies"
+  },
+  {
+    "name": "Mango Lassi",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "Traditional mango yogurt drink, rich and creamy.",
+    "price": 4.5,
+    "category": "Smoothies"
+  },
+  {
+    "name": "Chai Latte",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "Spiced tea with frothy milk and a touch of cinnamon.",
+    "price": 3.75,
+    "category": "Hot Drinks"
+  },
+  {
+    "name": "Berry Smoothie",
+    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "short_desc": "A refreshing mix of strawberries, blueberries, and raspberries.",
+    "price": 5.0,
+    "category": "Smoothies"
   }
 ]

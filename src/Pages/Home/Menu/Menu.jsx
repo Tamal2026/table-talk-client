@@ -7,7 +7,7 @@ const Menu = () => {
 
    
     useEffect(() => {
-        fetch('menu.json')
+        fetch('http://localhost:5000/menu')
             .then(res => res.json())
             .then(data => {
                 const popularItems = data.filter(item => item.type === 'popular');

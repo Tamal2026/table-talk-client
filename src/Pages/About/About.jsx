@@ -1,4 +1,3 @@
-import { FaUtensils } from "react-icons/fa";
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Cover from "../Shared/Cover/Cover";
 
