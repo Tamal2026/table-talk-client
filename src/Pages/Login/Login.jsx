@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const handleLogin = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password)
+    }
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
         <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105">
-          {/* Left Side - Image with Gradient Overlay */}
           <div
             className="md:w-1/2 w-full hidden md:flex items-center justify-center bg-cover bg-center relative"
             style={{
@@ -15,10 +21,9 @@ const Login = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-60"></div>
           </div>
   
-          {/* Right Side - Form */}
           <div className="md:w-1/2 w-full p-12 md:p-16 animate-fade-in">
             <h2 className="text-4xl font-semibold text-center text-blue-600 mb-8">Login</h2>
-            <form className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <label
                   htmlFor="email"
