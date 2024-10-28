@@ -9,6 +9,7 @@ import OrderFood from "../Pages/OrderFood/OrderFood";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateROute/PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,9 @@ export const router = createBrowserRouter([
       {
         path:"/signUp",
         element:<SignUp></SignUp>
+      },{
+        path:"/dashboard",
+        element:<Dashboard></Dashboard>
       }
     ],
   },

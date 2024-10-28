@@ -2,8 +2,10 @@ import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import UseCart from "../../UseCart/UseCart";
 
 const Navbar = () => {
+  const [cart] = UseCart()
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -46,7 +48,10 @@ const Navbar = () => {
         <Link to="/contact">Contact</Link>
       </li>
       <li>
-        <Link to="/orderFood">Order Food</Link>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
+      <li>
+        <Link to="/orderFood">Cart{cart.length}</Link>
       </li>
 
       {user ? (
