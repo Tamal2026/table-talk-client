@@ -19,6 +19,7 @@ const OurMenu = () => {
           Lunch: data.filter((item) => item.category === "Lunch"),
           Dinner: data.filter((item) => item.category === "Dinner"),
           Dessert: data.filter((item) => item.category === "dessert"),
+          Drinks: data.filter((item) => item.category === "drinks"),
         };
         setMenu(categories);
       });
@@ -29,6 +30,7 @@ const OurMenu = () => {
     Lunch: "https://i.ibb.co/yFnmChv/lunch-menu.jpg",
     Dinner: "https://i.ibb.co/z2sRtTJ/pexels-chanwalrus-958545.jpg",
     Dessert: "https://i.ibb.co/4RJfFnw/desserts-update.jpg",
+    Drinks: "https://i.ibb.co.com/4ZBcb36/drinks.png",
   };
 
   return (
@@ -55,13 +57,13 @@ const OurMenu = () => {
           >
             <div className="absolute inset-0  bg-black bg-opacity-50"></div>
             <div className="relative z-10">
-              {/* Transparent Card with Text */}
               <div className="bg-white bg-opacity-0 rounded-lg p-6 shadow-lg max-w-md mx-auto">
                 <h3 className="text-2xl font-semibold text-center text-white shadow-md">
                   Welcome to Our {category} Menu!
                 </h3>
                 <p className="text-gray-300 text-center mt-2">
-                  Enjoy our delicious {category.toLowerCase()} options made with the freshest ingredients.
+                  Enjoy our delicious {category.toLowerCase()} options made with
+                  the freshest ingredients.
                 </p>
               </div>
             </div>

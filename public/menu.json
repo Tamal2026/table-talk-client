@@ -293,44 +293,44 @@
   },
   {
     "name": "Classic Lemonade",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/hYktJTP/Lemonade-2-2.webp",
     "short_desc": "Refreshing lemonade with a hint of mint.",
     "price": 3.5,
-    "category": "Cold Drinks"
+    "category": "drinks"
   },
   {
     "name": "Iced Coffee",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/5F7F30n/Instant-Iced-Coffee-5-1.jpg",
     "short_desc": "Cold brewed coffee with a touch of vanilla.",
     "price": 4.0,
-    "category": "Cold Drinks"
+    "category": "drinks"
   },
   {
     "name": "Green Smoothie",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/QbM0dPG/green-smoothe.jpg",
     "short_desc": "A healthy blend of spinach, kale, and apple.",
     "price": 5.5,
-    "category": "Smoothies"
+    "category": "drinks"
   },
   {
     "name": "Mango Lassi",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/GcDZsZh/Simply-Recipes-Mango-Lassi-LEAD-13-73719759cc3f4a2ca7fe8be72baaeaab.jpg",
     "short_desc": "Traditional mango yogurt drink, rich and creamy.",
     "price": 4.5,
-    "category": "Smoothies"
+    "category": "drinks"
   },
   {
     "name": "Chai Latte",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/bQNRqqk/Chai-Latte.webp",
     "short_desc": "Spiced tea with frothy milk and a touch of cinnamon.",
     "price": 3.75,
-    "category": "Hot Drinks"
+    "category": "drinks"
   },
   {
     "name": "Berry Smoothie",
-    "img": "https://i.ibb.co.com/5j5LTTw/oredre.jpg",
+    "img": "https://i.ibb.co.com/0GhKzMC/berry-smotthes.webp",
     "short_desc": "A refreshing mix of strawberries, blueberries, and raspberries.",
     "price": 5.0,
-    "category": "Smoothies"
+    "category": "drinks"
   }
 ]

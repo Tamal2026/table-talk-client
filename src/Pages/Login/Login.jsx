@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const [captchaInput, setCaptchaInput] = useState('');
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { signIn } = useContext(AuthContext);
+
+  const from = location.state?.from || "/";
 
   useEffect(() => {
-    loadCaptchaEnginge(5); // Load the CAPTCHA with 5 characters once on mount
+    loadCaptchaEnginge(5); 
   }, []);
 
   const handleValidateCaptcha = () => {
-    // Check if entered CAPTCHA matches
     if (validateCaptcha(captchaInput)) {
       setIsCaptchaValid(true);
     } else {
@@ -27,17 +32,24 @@ const Login = () => {
     const password = form.password.value;
 
     if (isCaptchaValid) {
-      console.log("CAPTCHA validated", email, password);
-      // Proceed with login
+      signIn(email, password)
+        .then(result => {
+          const user = result.user;
+          console.log(user);
+          navigate(from, { replace: true });
+        })
+        .catch(error => {
+          console.error("Login error:", error);
+          alert("Login failed. Please check your credentials.");
+        });
     } else {
-      alert("Invalid CAPTCHA. Please try again.");
+      alert("Please validate the CAPTCHA before logging in.");
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-red-200 to-blue-300">
       <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105">
-  
         <div
           className="md:w-1/2 w-full hidden md:flex items-center justify-center bg-cover bg-center relative"
           style={{
@@ -57,6 +69,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
               />
@@ -68,6 +81,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
               />

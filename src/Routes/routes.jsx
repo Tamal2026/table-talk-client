@@ -8,6 +8,7 @@ import Services from "../Pages/Services/Sevices";
 import OrderFood from "../Pages/OrderFood/OrderFood";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateROute/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: <Services></Services>,
+        element:<PrivateRoute> <Services></Services></PrivateRoute>,
       },
       {
         path: "/orderFood",

@@ -1,9 +1,36 @@
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MenuItem = ({ item }) => {
   const { img, price, name, short_desc } = item;
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation()
+  const handleAddToCart = (food) => {
+    if (user && user.email) {
+      // TO-DO: Add to cart logic
+    } else {
+      Swal.fire({
+        title: "Please Login First to Order",
+        text: "You are not logged in",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location.pathname } });
+        }
+      });
+    }
+  };
+  
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-4 p-4 border-b border-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105">
@@ -28,6 +55,7 @@ const MenuItem = ({ item }) => {
       {/* Shopping Cart Button with Modern Animation */}
       <button className="relative flex items-center justify-center bg-green-500 text-white p-3 rounded-full shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-110 group">
         <FaShoppingCart
+          onClick={() => handleAddToCart(item)}
           className="text-lg relative z-10 transition-transform duration-300 group-hover:scale-125 group-hover:text-slate-100
                 "
         />
