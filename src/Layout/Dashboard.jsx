@@ -7,11 +7,16 @@ import {
   FaHistory,
   FaStar,
   FaBook,
+  FaUsers,
+  FaPlus,
+  FaClipboardList,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaBookOpenReader } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isAdmin = true;
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -25,7 +30,7 @@ const Dashboard = () => {
         } transition-transform duration-500 ease-in-out w-64 shadow-lg z-40`}
       >
         <div className="p-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Admin Panel</h2>
+          <h2 className="text-xl font-semibold">Dashboard</h2>
           <button
             onClick={toggleDrawer}
             className="text-2xl hover:text-gray-300"
@@ -39,50 +44,82 @@ const Dashboard = () => {
               to="/dashboard/home"
               className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
             >
-              <FaHome className="text-lg" /> Users Home
+              <FaHome className="text-lg" /> Dashboard Home
             </Link>
           </li>
-          <li>
-            <Link
-              to="/dashboard/cart"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaShoppingCart className="text-lg" /> My Cart
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/payment-history"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaHistory className="text-lg" /> Payment History
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/add-review"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaStar className="text-lg" /> Add Review
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/my-booking"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaBook className="text-lg" /> My Booking
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/settings"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaCog className="text-lg" /> Settings
-            </Link>
-          </li>
-
+          {!isAdmin ? (
+            <>
+              {/* User-specific routes */}
+              <li>
+                <Link
+                  to="/dashboard/cart"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaShoppingCart className="text-lg" /> My Cart
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/payment-history"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaHistory className="text-lg" /> Payment History
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/add-review"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaStar className="text-lg" /> Add Review
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/my-booking"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaBook className="text-lg" /> My Booking
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              {/* Admin-specific routes */}
+              <li>
+                <Link
+                  to="/dashboard/allUsers"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaUsers className="text-lg" /> Manage Users
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/add-product"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaPlus className="text-lg" /> Add Product
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/manage-orders"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaBookOpenReader className="text-lg" /> Manage Booking
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/manage-orders"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaClipboardList className="text-lg" /> Manage Orders
+                </Link>
+              </li>
+            </>
+          )}
           <hr className="border-gray-500 my-2" />
           <li>
             <Link
@@ -119,7 +156,7 @@ const Dashboard = () => {
         }`}
       >
         <h1 className="text-2xl font-bold">Dashboard Content</h1>
-       <Outlet></Outlet>
+        <Outlet />
       </div>
     </div>
   );
