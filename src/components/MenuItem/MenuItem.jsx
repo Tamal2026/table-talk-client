@@ -12,10 +12,10 @@ import UseCart from "../../UseCart/UseCart";
 const MenuItem = ({ item }) => {
   const { img, price, name, short_desc, _id } = item;
   const { user } = useContext(AuthContext);
-  const [,refetch]=UseCart()
+  const [, refetch] = UseCart();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = UseAxiosSecure()
+  const axiosSecure = UseAxiosSecure();
   const handleAddToCart = (food) => {
     if (user && user.email) {
       const cartItem = {
@@ -30,26 +30,24 @@ const MenuItem = ({ item }) => {
           Swal.fire({
             icon: "success",
             title: `<span style="color: #3085d6;">${name}</span> added to your cart!`,
-            imageUrl: img, 
+            imageUrl: img,
             imageAlt: "Product image",
             imageWidth: 200,
             imageHeight: 200,
             showConfirmButton: false,
             timer: 2000,
             customClass: {
-              image: 'swal-image-round',  
-              popup: 'swal-popup-animated', 
-              title: 'swal-title-decorated' 
+              image: "swal-image-round",
+              popup: "swal-popup-animated",
+              title: "swal-title-decorated",
             },
-            background: "#f9f9f9", 
-            timerProgressBar: true, 
+            background: "#f9f9f9",
+            timerProgressBar: true,
           });
-          
-          refetch() 
-          
+
+          refetch();
         }
       });
-    
     } else {
       Swal.fire({
         title: "Please Login First to Order",
@@ -87,10 +85,9 @@ const MenuItem = ({ item }) => {
         </button>
       </div>
 
-      {/* Shopping Cart Button with Modern Animation */}
       <button className="relative flex items-center justify-center bg-green-500 text-white p-3 rounded-full shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-110 group">
         <FaShoppingCart
-          onClick={ handleAddToCart}
+          onClick={handleAddToCart}
           className="text-lg relative z-10 transition-transform duration-300 group-hover:scale-125 group-hover:text-slate-100
                 "
         />

@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrash } from "react-icons/fa";
 import UseAxiosSecure from "../../UseAxiosPublic/UseAxiosPublic";
+import { GrUserAdmin } from "react-icons/gr";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = UseAxiosSecure();
-  
+
   // Fetch users data with react-query
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -14,15 +16,53 @@ const AllUsers = () => {
     },
   });
 
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) { // Use 'modifiedCount' to check success
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is admin now`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch(); // Refetch users after promotion
+      }
+    }).catch((error) => {
+      console.error("Error making admin:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    });
+  };
+
   // Handle user deletion
   const handleDelete = (userId) => {
-    axiosSecure
-      .delete(`/users/${userId}`)
-      .then(() => {
-        // Optionally, you could refetch users after deletion
-        console.log("User deleted successfully");
-      })
-      .catch((error) => console.error("Error deleting user:", error));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${userId}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+          refetch(); // Refetch users after deletion
+        });
+      }
+    });
   };
 
   return (
@@ -41,11 +81,10 @@ const AllUsers = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} className="border-b py-2">
+            <tr key={user._id} className="border-b py-2">
               <td className="p-2">
                 <div className="flex flex-col items-start">
-                  <span className="font-medium">Name</span>
-                  <span>{user.name}</span>
+                  <span className="font-medium">{user.name}</span>
                 </div>
               </td>
               <td className="p-2">
@@ -54,13 +93,20 @@ const AllUsers = () => {
                 </div>
               </td>
               <td className="p-2">
-                <div className="flex flex-col items-start">
-                  <span>{user.role || "User"}</span>
-                </div>
+                {user.role === 'admin' ? 'Admin' :
+                  <button
+                    onClick={() => handleMakeAdmin(user)}
+                    className="flex flex-col items-start"
+                  >
+                    <span className="text-md p-2 rounded-lg bg-blue-600 text-white">
+                      {user.role || <GrUserAdmin />}
+                    </span>
+                  </button>
+                }
               </td>
               <td className="p-2 text-center">
                 <button
-                  onClick={() => handleDelete(user.id)}
+                  onClick={() => handleDelete(user._id)}
                   className="text-red-500 hover:text-red-700"
                 >
                   <FaTrash />
