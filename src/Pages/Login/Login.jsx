@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../Provider/AuthProvider";
+import SocialLogin from "../../SocialLogin/SocialLogin"
+
 
 const Login = () => {
   const [captchaInput, setCaptchaInput] = useState('');
@@ -117,6 +119,13 @@ const Login = () => {
               Log In
             </button>
           </form>
+
+          {/* Social login section */}
+          <div className="my-6 text-center">
+            <p className="text-sm text-gray-600 mb-2 font-bold">--- Or login with ---</p>
+            <SocialLogin />
+          </div>
+
           <p className="mt-8 text-center text-sm text-gray-600">
             Don’t have an account?{" "}
             <Link to="/signUp" className="text-blue-500 hover:underline">

@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import UseAxiosPublic from "../../UseAxiosPublic/UseAxiosPublic";
+import SocialLogin from "../../SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = UseAxiosPublic();
   const { createUser } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [image, setImage] = useState(null);
@@ -22,13 +25,21 @@ const SignUp = () => {
         const loggedUser = result.user;
         console.log("User created:", loggedUser);
 
-        // Update the user profile with display name and photo URL
         updateProfile(loggedUser, {
           displayName: data.name,
           photoURL: image || "default_image_url_placeholder"
         })
           .then(() => {
-            console.log("User profile updated");
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            };
+            axiosPublic.post("/users", userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  console.log("User added to the database");
+                }
+              });
           })
           .catch(error => {
             console.error("Error updating profile:", error);
@@ -45,7 +56,7 @@ const SignUp = () => {
         <h2 className="text-3xl font-semibold text-center text-purple-600 mb-6 animate-fade-in">
           Register
         </h2>
-        
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 animate-fade-in">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-600">
@@ -116,7 +127,10 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
-        
+
+   
+        <SocialLogin />
+
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
           <Link to={"/login"} className="text-purple-500 hover:underline">Log In</Link>

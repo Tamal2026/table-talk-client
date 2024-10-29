@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import Swal from "sweetalert2";
 import UseCart from "../../UseCart/UseCart";
 
 const Navbar = () => {
@@ -20,13 +19,7 @@ const Navbar = () => {
   // Show success message on login
   useEffect(() => {
     if (user) {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Logged in successfully!",
-        showConfirmButton: false,
-        timer: 1500
-      });
+     console.log(user)
     }
   }, [user]);
 
@@ -51,7 +44,7 @@ const Navbar = () => {
         <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
-        <Link to="/orderFood">Cart{cart.length}</Link>
+        <Link to="/dashboard/cart">Cart{cart.length}</Link>
       </li>
 
       {user ? (

@@ -10,6 +10,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateROute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element:<PrivateRoute> <Services></Services></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Services></Services>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/orderFood",
@@ -44,12 +50,20 @@ export const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path:"/signUp",
-        element:<SignUp></SignUp>
-      },{
-        path:"/dashboard",
-        element:<Dashboard></Dashboard>
-      }
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
+      
     ],
+  },
+  {
+    path: "/dashboard",
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+      path:'cart',
+      element:<Cart></Cart>
+    }
+  ],
   },
 ]);
