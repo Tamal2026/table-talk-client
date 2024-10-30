@@ -13,11 +13,11 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaBookOpenReader } from "react-icons/fa6";
+import UseAdmin from "../components/UseAdmin/UseAdmin";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isAdmin = true;
-
+  const [isAdmin] = UseAdmin()
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };

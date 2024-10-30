@@ -11,32 +11,49 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-      return res.data;
+      const token  = localStorage.getItem("access-token")
+      try {
+        const res = await axiosSecure.get("/users", {
+          headers: {
+            authorization: `Bearer ${token}`, 
+          },
+        })
+        return res.data;
+      } catch (err) {
+        console.error(
+          "Error fetching users:",
+          err.response?.status,
+          err.response?.data
+        );
+        throw err; // Rethrow the error for React Query's error handling
+      }
     },
   });
 
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`/users/${user._id}`).then((res) => {
-      console.log(res.data);
-      if (res.data.modifiedCount > 0) { // Use 'modifiedCount' to check success
+    axiosSecure
+      .patch(`/users/${user._id}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is admin now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch(); // Refetch users after promotion
+        }
+      })
+      .catch((error) => {
+        console.error("Error making admin:", error);
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `${user.name} is admin now`,
-          showConfirmButton: false,
-          timer: 1500
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
         });
-        refetch(); // Refetch users after promotion
-      }
-    }).catch((error) => {
-      console.error("Error making admin:", error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
       });
-    });
   };
 
   // Handle user deletion
@@ -93,7 +110,9 @@ const AllUsers = () => {
                 </div>
               </td>
               <td className="p-2">
-                {user.role === 'admin' ? 'Admin' :
+                {user.role === "admin" ? (
+                  "Admin"
+                ) : (
                   <button
                     onClick={() => handleMakeAdmin(user)}
                     className="flex flex-col items-start"
@@ -102,7 +121,7 @@ const AllUsers = () => {
                       {user.role || <GrUserAdmin />}
                     </span>
                   </button>
-                }
+                )}
               </td>
               <td className="p-2 text-center">
                 <button
