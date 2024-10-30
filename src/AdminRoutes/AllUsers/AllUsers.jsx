@@ -13,6 +13,8 @@ const AllUsers = () => {
     queryFn: async () => {
       const token  = localStorage.getItem("access-token")
       try {
+
+        
         const res = await axiosSecure.get("/users", {
           headers: {
             authorization: `Bearer ${token}`, 
@@ -25,7 +27,7 @@ const AllUsers = () => {
           err.response?.status,
           err.response?.data
         );
-        throw err; // Rethrow the error for React Query's error handling
+        throw err;
       }
     },
   });
@@ -43,7 +45,7 @@ const AllUsers = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          refetch(); // Refetch users after promotion
+          refetch(); 
         }
       })
       .catch((error) => {
@@ -76,7 +78,7 @@ const AllUsers = () => {
               icon: "success",
             });
           }
-          refetch(); // Refetch users after deletion
+          refetch(); // Refetch users after delete
         });
       }
     });

@@ -12,6 +12,7 @@ import PrivateRoute from "../PrivateROute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../AdminRoutes/AllUsers/AllUsers";
+import AddFood from "../AddFood/AddFood";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -54,21 +55,30 @@ export const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp></SignUp>,
       },
-      
     ],
   },
+
   {
     path: "/dashboard",
-    element:<Dashboard></Dashboard>,
+    element: <Dashboard></Dashboard>,
+    // Users Route
     children: [
       {
-      path:'cart',
-      element:<Cart></Cart>
-    },
-    {
-      path:'allUsers',
-      element:<AllUsers></AllUsers>
-    }
-  ],
+        path: "cart",
+        element: <Cart></Cart>,
+      },
+
+      // Admin Routes
+
+      {
+        path: "addFood",
+        element: <AddFood></AddFood>,
+      },
+
+      {
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
+      },
+    ],
   },
 ]);

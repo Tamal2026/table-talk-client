@@ -9,12 +9,12 @@ const UseAdmin = () => {
   const { data: isAdmin = false } = useQuery({
     queryKey: [user?.email, "isAdmin"],
     queryFn: async () => {
-      if (!user?.email) return false; // Prevent the request if email is undefined
+      if (!user?.email) return false; 
       const res = await axiosSecure.get(`/users/${user.email}`);
       console.log("Admin status:", res.data.admin);
       return res.data?.admin;
     },
-    enabled: !!user?.email, // Only run the query if email is defined
+    enabled: !!user?.email,
   });
 
   return [isAdmin];
