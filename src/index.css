@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.imgGradient {
+  background: linear-gradient(black black);
+}

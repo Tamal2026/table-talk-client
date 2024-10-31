@@ -126,7 +126,7 @@ const Dashboard = () => {
               to="/"
               className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
             >
-              <FaCog className="text-lg" /> Home
+              <FaHome className="text-lg" /> Back To Home
             </Link>
           </li>
         </ul>
