@@ -13,6 +13,8 @@ import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../AdminRoutes/AllUsers/AllUsers";
 import AddFood from "../AddFood/AddFood";
+import ManageFood from "../ManageFood/ManageFood";
+import UpdateFood from "../UpdateFood/UpdateFood";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -78,6 +80,16 @@ export const router = createBrowserRouter([
       {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "manageFood",
+        element: <ManageFood></ManageFood>,
+      },
+      {
+        path: "updateFood/:id",
+        element: <UpdateFood></UpdateFood>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/menu/${params.id}`),
       },
     ],
   },

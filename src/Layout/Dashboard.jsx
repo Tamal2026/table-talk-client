@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import {
   FaHome,
-  FaCog,
   FaShoppingCart,
   FaHistory,
   FaStar,
@@ -17,7 +16,7 @@ import UseAdmin from "../components/UseAdmin/UseAdmin";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isAdmin] = UseAdmin()
+  const [isAdmin] = UseAdmin();
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -112,10 +111,10 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/manage-orders"
+                  to="/dashboard/manageFood"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >
-                  <FaClipboardList className="text-lg" /> Manage Orders
+                  <FaClipboardList className="text-lg" /> Manage Food
                 </Link>
               </li>
             </>

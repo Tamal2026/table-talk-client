@@ -18,8 +18,8 @@ const OurMenu = () => {
           Breakfast: data.filter((item) => item.category === "Breakfast"),
           Lunch: data.filter((item) => item.category === "Lunch"),
           Dinner: data.filter((item) => item.category === "Dinner"),
-          Dessert: data.filter((item) => item.category === "dessert"),
-          Drinks: data.filter((item) => item.category === "drinks"),
+          Dessert: data.filter((item) => item.category === "Dessert"),
+          Drinks: data.filter((item) => item.category === "Drinks"),
         };
         setMenu(categories);
       });

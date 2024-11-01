@@ -1,8 +1,11 @@
 import { useState } from "react";
 import useAxiosPublic from "../UseAxiosPublic/UseAxiosPublic";
+import useAxiosSecure from "../UseAxiosSucure/UseAxiosSecure";
+import Swal from "sweetalert2";
 
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+
 const AddFood = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,8 +16,9 @@ const AddFood = () => {
     imageUrl: "",
     imageFile: null,
   });
-  const axiosPublic = useAxiosPublic();
 
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [previewImage, setPreviewImage] = useState(null);
 
   const handleChange = (e) => {
@@ -26,7 +30,7 @@ const AddFood = () => {
     const file = e.target.files[0];
     if (file) {
       setFormData({ ...formData, imageFile: file });
-      setPreviewImage(URL.createObjectURL(file)); //
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
@@ -34,30 +38,62 @@ const AddFood = () => {
     e.preventDefault();
 
     if (!formData.imageFile) {
+      Swal.fire({
+        icon: "error",
+        title: "No image selected",
+        text: "Please select an image before submitting.",
+      });
       return;
     }
 
-    const imgData = new FormData();
-    imgData.append("image", formData.imageFile);
-
     try {
+      const imgData = new FormData();
+      imgData.append("image", formData.imageFile);
+
       const res = await axiosPublic.post(img_hosting_api, imgData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      const imageUrl = res.data.data.url;
+      if (res.data.success) {
+        const menuItem = {
+          name: formData.name,
+          category: formData.category,
+          price: parseFloat(formData.price),
+          img: res.data.data.display_url,
+          short_desc: formData.short_desc,
+          description: formData.description,
+        };
 
-      const fullData = {
-        ...formData,
-        imageUrl,
-        imageFile: null,
-      };
+        const menuRes = await axiosSecure.post("/menu", menuItem);
 
-      console.log(fullData);
+        if (menuRes.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setFormData({
+            name: "",
+            category: "Breakfast",
+            price: "",
+            short_desc: "",
+            description: "",
+            imageUrl: "",
+            imageFile: null,
+          });
+          setPreviewImage(null);
+        }
+      }
     } catch (error) {
-      console.error("Error uploading image:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+      console.error(error);
     }
   };
 
@@ -73,6 +109,7 @@ const AddFood = () => {
           Add New Food Item
         </h2>
 
+ 
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Name
         </label>
@@ -89,10 +126,10 @@ const AddFood = () => {
           Category
         </label>
         <select
-          name="category"
+          name="category" 
           value={formData.category}
           onChange={handleChange}
-          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300 transform hover:scale-105 focus:scale-105 appearance-none"
+          className="w-full px-4 py-2 mb-4 border  border-gray-300 rounded-md bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300 transform hover:scale-105 focus:scale-105 appearance-none"
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))`,
           }}
@@ -100,11 +137,12 @@ const AddFood = () => {
           <option className="bg-black bg-opacity-40 text-white">
             Breakfast
           </option>
-          <option className="bg-gray-900 bg-opacity-40 text-white">Lunch</option>
-          <option className="bg-gray-900 bg-opacity-40 text-white">Dinner</option>
-          <option className="bg-gray-900 bg-opacity-40 text-white">Dessert</option>
-          <option className="bg-gray-900 bg-opacity-40 text-white">Drinks</option>
+          <option className="bg-black bg-opacity-40 text-white">Lunch</option>
+          <option className="bg-black bg-opacity-40 text-white">Dinner</option>
+          <option className="bg-black bg-opacity-40 text-white">Dessert</option>
+          <option className="bg-black bg-opacity-40 text-white">Drinks</option>
         </select>
+
 
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Price
@@ -130,6 +168,7 @@ const AddFood = () => {
           placeholder="Enter a short description"
         />
 
+        {/* Description Input */}
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Description
         </label>
@@ -141,6 +180,7 @@ const AddFood = () => {
           placeholder="Enter a detailed description"
         />
 
+        {/* Image Input */}
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Image
         </label>
