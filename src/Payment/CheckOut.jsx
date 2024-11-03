@@ -11,6 +11,7 @@ import useCart from "../UseCart/UseCart";
 
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
@@ -20,6 +21,7 @@ const CheckOutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
+  const navigate = useNavigate()
   const axiosSecure = useAxiosSecure();
   const [cart,refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
@@ -102,6 +104,7 @@ const CheckOutForm = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            navigate('/dashboard/paymentHistory')
           } else {
             console.error("Unexpected response structure:", res.data);
           }
