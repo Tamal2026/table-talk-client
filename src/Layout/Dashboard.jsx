@@ -16,7 +16,7 @@ import UseAdmin from "../components/UseAdmin/UseAdmin";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isAdmin] = UseAdmin();
+  const [isAdmin ] = UseAdmin();
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -39,17 +39,18 @@ const Dashboard = () => {
         </div>
         <ul className="space-y-4 p-4">
           <li>
-            <Link
-              to="/dashboard/home"
-              className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-            >
-              <FaHome className="text-lg" /> Dashboard Home
-            </Link>
+         
           </li>
           {!isAdmin ? (
             <>
               {/* User-specific routes */}
               <li>
+                <Link
+                  to="/dashboard/userHome"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaShoppingCart className="text-lg" /> User Home
+                </Link>
                 <Link
                   to="/dashboard/cart"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
@@ -94,6 +95,12 @@ const Dashboard = () => {
             <>
               {/* Admin-specific routes */}
               <li>
+              <Link
+                  to="/dashboard/adminHome"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaHome className="text-lg" /> User Home
+                </Link>
                 <Link
                   to="/dashboard/allUsers"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"

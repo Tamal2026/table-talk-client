@@ -6,7 +6,8 @@ import UseAxiosSecure from "../../UseAxiosSucure/UseAxiosSecure";
 const UseAdmin = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = UseAxiosSecure();
-  const { data: isAdmin = false } = useQuery({
+  const { data: isAdmin = false,isLoading } = useQuery({
+    enabled: !!user?.email,
     queryKey: [user?.email, "isAdmin"],
     queryFn: async () => {
       if (!user?.email) return false; 
@@ -14,9 +15,9 @@ const UseAdmin = () => {
       console.log("Admin status:", res.data.admin);
       return res.data?.admin;
     },
-    enabled: !!user?.email,
+    
   });
 
-  return [isAdmin];
+  return [isAdmin, isLoading];
 };
 export default UseAdmin;

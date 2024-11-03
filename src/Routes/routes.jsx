@@ -17,6 +17,9 @@ import ManageFood from "../ManageFood/ManageFood";
 import UpdateFood from "../UpdateFood/UpdateFood";
 import Payment from "../Payment/Payment";
 import PaymentHistory from "../PaymentHistory/PaymentHistory";
+import UserHome from "../UserHome/UserHome";
+import AdminHome from "../AdminHome/AdminHome";
+import AdminRoute from "../AdminRoute/AdminRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -70,9 +73,15 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart></Cart>,
-      },{
-        path:"paymentHistory",
-        element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
+
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
         path: "payment",
@@ -83,20 +92,45 @@ export const router = createBrowserRouter([
 
       {
         path: "addFood",
-        element: <AddFood></AddFood>,
+        element: (
+          <AdminRoute>
+            <AddFood></AddFood>
+          </AdminRoute>
+        ),
       },
 
       {
         path: "allUsers",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageFood",
-        element: <ManageFood></ManageFood>,
+        element: (
+          <AdminRoute>
+            <ManageFood></ManageFood>
+          </AdminRoute>
+        ),
       },
       {
         path: "updateFood/:id",
-        element: <UpdateFood></UpdateFood>,
+        element: (
+          <AdminRoute>
+            <UpdateFood></UpdateFood>
+          </AdminRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/menu/${params.id}`),
       },
