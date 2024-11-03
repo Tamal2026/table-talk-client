@@ -75,6 +75,14 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
+                    to="/dashboard/paymentHistory"
+                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
+                >
+                  <FaHistory className="text-lg" /> Payment History
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/dashboard/my-booking"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >

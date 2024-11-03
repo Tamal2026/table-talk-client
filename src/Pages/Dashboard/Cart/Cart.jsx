@@ -2,6 +2,7 @@ import { FaTrash } from "react-icons/fa";
 import UseCart from "../../../UseCart/UseCart";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../UseAxiosSucure/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart] = UseCart();
@@ -40,9 +41,16 @@ const Cart = () => {
           <span className="text-lg font-semibold">Total Price</span>
           <span className="text-2xl font-bold">${totalPrice.toFixed(2)}</span>
         </div>
-        <button className="bg-green-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-          Pay
-        </button>
+        <Link to={"/dashboard/payment"}>
+          <button
+            disabled={!cart.length}
+            className={`${
+              !cart.length ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
+            } text-white py-2 px-6 rounded-lg font-semibold transition-colors`}
+          >
+            Pay
+          </button>
+        </Link>
       </div>
 
       <div className="bg-white rounded-lg shadow-md">

@@ -15,6 +15,8 @@ import AllUsers from "../AdminRoutes/AllUsers/AllUsers";
 import AddFood from "../AddFood/AddFood";
 import ManageFood from "../ManageFood/ManageFood";
 import UpdateFood from "../UpdateFood/UpdateFood";
+import Payment from "../Payment/Payment";
+import PaymentHistory from "../PaymentHistory/PaymentHistory";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +70,13 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart></Cart>,
+      },{
+        path:"paymentHistory",
+        element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
 
       // Admin Routes

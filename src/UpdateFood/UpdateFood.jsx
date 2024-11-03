@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import Cover from "../Pages/Shared/Cover/Cover";
 import UseAxiosPublic from "../UseAxiosPublic/UseAxiosPublic";
@@ -9,13 +9,26 @@ const UpdateFood = () => {
   const item = useLoaderData();
 
   const [formData, setFormData] = useState({
-    name: item?.name || "",
-    price: item?.price || "",
-    category: item?.category || "",
-    short_desc: item?.short_desc || "",
-    description: item?.description || "",
+    name: "",
+    price: "",
+    category: "",
+    short_desc: "",
+    description: "",
     img: null,
   });
+
+  useEffect(() => {
+    if (item) {
+      setFormData({
+        name: item.name || "",
+        price: item.price || "",
+        category: item.category || "",
+        short_desc: item.short_desc || "",
+        description: item.description || "",
+        img: null,
+      });
+    }
+  }, [item]);
 
   const [preview, setPreview] = useState("");
 
@@ -38,7 +51,6 @@ const UpdateFood = () => {
     e.preventDefault();
 
     try {
-      // Create FormData for handling image upload
       const submissionData = new FormData();
       submissionData.append("name", formData.name);
       submissionData.append("price", formData.price);
@@ -46,21 +58,30 @@ const UpdateFood = () => {
       submissionData.append("short_desc", formData.short_desc);
       submissionData.append("description", formData.description);
 
-      // If an image is selected, add it to FormData
       if (formData.img) {
         submissionData.append("img", formData.img);
       }
 
-      // Send PATCH request with FormData
-      const response = await axiosPublic.patch(`/menu/${item._id}`, submissionData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      for (let pair of submissionData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+
+      const response = await axiosPublic.patch(
+        `/menu/${item._id}`,
+        submissionData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       console.log("Update successful:", response.data);
     } catch (error) {
-      console.error("Update failed:", error);
+      console.error(
+        "Update failed:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
 
@@ -92,7 +113,9 @@ const UpdateFood = () => {
 
         {/* Price Input */}
         <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">Price</label>
+          <label className="block text-gray-700 font-semibold mb-2">
+            Price
+          </label>
           <input
             type="number"
             name="price"
@@ -105,7 +128,9 @@ const UpdateFood = () => {
 
         {/* Category Dropdown */}
         <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">Category</label>
+          <label className="block text-gray-700 font-semibold mb-2">
+            Category
+          </label>
           <select
             name="category"
             value={formData.category}
@@ -124,7 +149,9 @@ const UpdateFood = () => {
 
         {/* Short Description */}
         <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">Short Description</label>
+          <label className="block text-gray-700 font-semibold mb-2">
+            Short Description
+          </label>
           <input
             type="text"
             name="short_desc"
@@ -137,7 +164,9 @@ const UpdateFood = () => {
 
         {/* Description */}
         <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">Description</label>
+          <label className="block text-gray-700 font-semibold mb-2">
+            Description
+          </label>
           <textarea
             name="description"
             value={formData.description}
@@ -150,7 +179,9 @@ const UpdateFood = () => {
 
         {/* Image Upload */}
         <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">Image</label>
+          <label className="block text-gray-700 font-semibold mb-2">
+            Image
+          </label>
           <input
             type="file"
             name="img"
