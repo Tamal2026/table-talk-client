@@ -84,7 +84,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/my-booking"
+                  to="/dashboard/myBooking"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >
                   <FaBook className="text-lg" /> My Booking
@@ -118,7 +118,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/manage-orders"
+                  to="/dashboard/manageBooking"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >
                   <FaBookOpenReader className="text-lg" /> Manage Booking

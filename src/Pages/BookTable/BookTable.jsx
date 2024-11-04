@@ -7,14 +7,16 @@ const BookTable = () => {
   const axiosPublic = UseAxiosPublic();
   const { user } = useContext(AuthContext);
 
-  const intialReservation = {
+  const initialReservation = {
     name: user?.displayName || "",
     email: user?.email || "",
     date: "",
     time: "12:00 PM",
     guests: "0",
+    requests: "", // Special Requests field
   };
-  const [reservation, setReservation] = useState(intialReservation);
+  const [reservation, setReservation] = useState(initialReservation);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,35 +25,39 @@ const BookTable = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (user) {
-      const bookTableInfo = {
-        name: user.displayName,
-        email: user.email,
-        date: reservation.date,
-        time: reservation.time,
-        guests: reservation.guests,
-      };
-
-      axiosPublic
-        .post("/bookTable", bookTableInfo)
-        .then((res) => {
-          if (res.data.insertedId) {
-            Swal.fire({
-              icon: "success",
-              title: `${user.displayName} your reservation successful ${reservation.date} at ${reservation.time}`,
-              showConfirmButton: false,
-              timer: 4000,
-            });
-            setReservation(intialReservation);
-          }
-        })
-        .catch((error) => {
-          console.error("Error booking table:", error);
-        });
-    } else {
+    if (!user) {
       console.error("User not logged in");
+      return;
     }
+
+    setLoading(true); // Start loading
+    const bookTableInfo = {
+      name: user.displayName,
+      email: user.email,
+      date: reservation.date,
+      time: reservation.time,
+      guests: reservation.guests,
+      requests: reservation.requests,
+    };
+
+    axiosPublic
+      .post("/bookTable", bookTableInfo)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: `${user.displayName}, your reservation is confirmed on ${reservation.date} at ${reservation.time}.`,
+            showConfirmButton: false,
+            timer: 4000,
+          });
+          setReservation(initialReservation); 
+        }
+      })
+      .catch((error) => {
+        setLoading(false); 
+        console.error("Error booking table:", error);
+      });
   };
 
   return (
@@ -98,6 +104,7 @@ const BookTable = () => {
             name="date"
             value={reservation.date}
             onChange={handleChange}
+            min={new Date().toISOString().split("T")[0]} // Only allow future dates
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none"
           />
@@ -120,10 +127,7 @@ const BookTable = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="guests"
-          >
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="guests">
             Number of Guests
           </label>
           <select
@@ -145,11 +149,29 @@ const BookTable = () => {
           </select>
         </div>
 
+        {/* Special Requests Field */}
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="requests">
+            Special Requests
+          </label>
+          <textarea
+            id="requests"
+            name="requests"
+            value={reservation.requests}
+            onChange={handleChange}
+            placeholder="Any special requests or any kind of restrictions?"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none"
+          />
+        </div>
+
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 focus:outline-none"
+          disabled={loading}
+          className={`w-full py-2 px-4 ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+          } text-white font-bold rounded-md focus:outline-none`}
         >
-          Reserve Now
+          {loading ? "Reserving..." : "Reserve Now"}
         </button>
       </form>
     </div>

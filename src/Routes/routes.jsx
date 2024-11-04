@@ -21,6 +21,8 @@ import UserHome from "../UserHome/UserHome";
 import AdminHome from "../AdminHome/AdminHome";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BookTable from "../Pages/BookTable/BookTable";
+import MyBooking from "../MyBooking/MyBooking";
+import ManageBooking from "../ManageBooking/ManageBooking";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -83,6 +85,10 @@ export const router = createBrowserRouter([
         path: "userHome",
         element: <UserHome></UserHome>,
       },
+      {
+        path: "myBooking",
+        element: <MyBooking></MyBooking>,
+      },
 
       {
         path: "paymentHistory",
@@ -126,6 +132,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageFood></ManageFood>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageBooking",
+        element: (
+          <AdminRoute>
+            <ManageBooking></ManageBooking>
           </AdminRoute>
         ),
       },
