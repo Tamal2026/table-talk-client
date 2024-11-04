@@ -20,6 +20,7 @@ import PaymentHistory from "../PaymentHistory/PaymentHistory";
 import UserHome from "../UserHome/UserHome";
 import AdminHome from "../AdminHome/AdminHome";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BookTable from "../Pages/BookTable/BookTable";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/bookTable",
+        element: <BookTable></BookTable>,
       },
       {
         path: "/contact",

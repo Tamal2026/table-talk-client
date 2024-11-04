@@ -10,7 +10,7 @@ const TeamMembar = () => {
           <div className="relative flex flex-col  items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
             <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
               <img
-                src="https://i.ibb.co.com/C7sTzhp/hero-removebg-preview-removebg-preview.png"
+                src="https://i.ibb.co.com/YLx613w/team-1.jpg"
                 alt="Team Member 1"
                 width={96}
                 height={96}
@@ -39,7 +39,7 @@ const TeamMembar = () => {
           <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
             <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
               <img
-                src="/images/team-2.jpg"
+                src="https://i.ibb.co.com/5s9Lt9N/team-2.jpg"
                 alt="Team Member 2"
                 width={96}
                 height={96}
@@ -66,7 +66,7 @@ const TeamMembar = () => {
           <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
             <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
               <img
-                src="/images/team-3.jpg"
+                src="https://i.ibb.co.com/5hD3YTC/team-3.jpg"
                 alt="Team Member 3"
                 width={96}
                 height={96}
@@ -93,7 +93,7 @@ const TeamMembar = () => {
           <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
             <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
               <img
-                src="/images/team-4.jpg"
+                src="https://i.ibb.co.com/5cWr91s/team-4.jpg0 "
                 alt="Team Member 4"
                 width={96}
                 height={96}
