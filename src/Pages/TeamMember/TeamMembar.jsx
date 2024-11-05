@@ -1,124 +1,85 @@
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const TeamMembar = () => {
-    return (
-        <>
-        <h1 className="text-5xl font-bold font-serif text-center">Our Master CHEF's</h1>
-  
-        <div className="flex flex-wrap justify-center items-center gap-16 p-4">
-          <div className="relative flex flex-col  items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
-            <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
-              <img
-                src="https://i.ibb.co.com/YLx613w/team-1.jpg"
-                alt="Team Member 1"
-                width={96}
-                height={96}
-                className="object-cover"
-              />
-            </div>
-  
-            <div className="text-center">
-              <h2 className="text-lg font-semibold">Team Member 1</h2>
-              <p className="text-sm text-gray-600">Position</p>
-            </div>
-  
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex space-x-2 mt-4 opacity-0 group-hover:opacity-100">
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaFacebookF />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaTwitter />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaLinkedinIn />
-              </div>
-            </div>
+  return (
+    <>
+      <SectionTitle
+        subHeading={"Team members"}
+        heading={"Our Master CHEF's"}
+      ></SectionTitle>
+
+      <div className="flex flex-wrap justify-center items-center gap-16 p-4">
+        {/* First Team Member */}
+        <div className="relative flex flex-col items-center justify-center bg-gray-100 w-60 h-96 shadow-md rounded-lg group overflow-hidden">
+          <div className="w-full h-4/5 mb-4 rounded-lg overflow-hidden">
+            <img
+              src="https://i.ibb.co/YLx613w/team-1.jpg"
+              alt="Team Member 1"
+              className="object-cover w-full h-full"
+            />
           </div>
-  
-          <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
-            <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
-              <img
-                src="https://i.ibb.co.com/5s9Lt9N/team-2.jpg"
-                alt="Team Member 2"
-                width={96}
-                height={96}
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center">
-              <h2 className="text-lg font-semibold">Team Member 2</h2>
-              <p className="text-sm text-gray-600">Position</p>
-            </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex space-x-2 mt-4 opacity-0 group-hover:opacity-100">
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaFacebookF />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaTwitter />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaLinkedinIn />
-              </div>
-            </div>
-          </div>
-  
-          <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
-            <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
-              <img
-                src="https://i.ibb.co.com/5hD3YTC/team-3.jpg"
-                alt="Team Member 3"
-                width={96}
-                height={96}
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center">
-              <h2 className="text-lg font-semibold">Team Member 3</h2>
-              <p className="text-sm text-gray-600">Position</p>
-            </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex space-x-2 mt-4 opacity-0 group-hover:opacity-100">
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaFacebookF />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaTwitter />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaLinkedinIn />
-              </div>
-            </div>
-          </div>
-  
-          <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 w-60 h-80 shadow-md rounded-lg group overflow-hidden">
-            <div className="w-24 h-24 mb-4 rounded-full overflow-hidden">
-              <img
-                src="https://i.ibb.co.com/5cWr91s/team-4.jpg0 "
-                alt="Team Member 4"
-                width={96}
-                height={96}
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center">
-              <h2 className="text-lg font-semibold">Team Member 4</h2>
-              <p className="text-sm text-gray-600">Position</p>
-            </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex space-x-2 mt-4 opacity-0 group-hover:opacity-100">
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaFacebookF />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaTwitter />
-              </div>
-              <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                <FaLinkedinIn />
-              </div>
-            </div>
+
+          <div className="text-center mb-4">
+            <h2 className="text-lg font-semibold">Gordon Ramsay</h2>
+            <p className="text-blue-500 font-mono text-lg font-semibold">
+              Executive Chef
+            </p>
           </div>
         </div>
-      </>
-    );
+
+        {/* Second Team Member */}
+        <div className="relative flex flex-col items-center justify-center bg-gray-100 w-60 h-96 shadow-md rounded-lg group overflow-hidden">
+          <div className="w-full h-4/5 mb-4 rounded-lg overflow-hidden">
+            <img
+              src="https://i.ibb.co/5s9Lt9N/team-2.jpg"
+              alt="Team Member 2"
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="text-center mb-4">
+            <h2 className="text-lg font-semibold">Massimo Bottura</h2>
+            <p className="text-blue-500 font-mono text-lg font-semibold">
+              Sous Chef
+            </p>
+          </div>
+        </div>
+
+        {/* Third Team Member */}
+        <div className="relative flex flex-col items-center justify-center bg-gray-100 w-60 h-96 shadow-md rounded-lg group overflow-hidden">
+          <div className="w-full h-4/5 mb-4 rounded-lg overflow-hidden">
+            <img
+              src="https://i.ibb.co/5hD3YTC/team-3.jpg"
+              alt="Team Member 3"
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="text-center mb-4">
+            <h2 className="text-lg font-semibold">Alice Waters</h2>
+            <p className="text-blue-500 font-mono text-lg font-semibold">
+              Pastry Chef
+            </p>
+          </div>
+        </div>
+
+        {/* Fourth Team Member */}
+        <div className="relative flex flex-col items-center justify-center bg-gray-100 w-60 h-96 shadow-md rounded-lg group overflow-hidden">
+          <div className="w-full h-4/5 mb-4 rounded-lg overflow-hidden">
+            <img
+              src="https://i.ibb.co/5cWr91s/team-4.jpg"
+              alt="Team Member 4"
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="text-center mb-4">
+            <h2 className="text-lg font-semibold">Rene Redzepi</h2>
+            <p className="text-blue-500 font-mono text-lg font-semibold">
+              Line Chef
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default TeamMembar;

@@ -8,7 +8,6 @@ import Services from "../Pages/Services/Sevices";
 import OrderFood from "../Pages/OrderFood/OrderFood";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
-import PrivateRoute from "../PrivateROute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../AdminRoutes/AllUsers/AllUsers";
@@ -51,12 +50,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Services></Services>
-          </PrivateRoute>
-        ),
+        element: <Services></Services>,
       },
       {
         path: "/orderFood",
