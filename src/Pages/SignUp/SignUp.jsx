@@ -38,6 +38,7 @@ const SignUp = () => {
             const userInfo = {
               name: data.name,
               email: data.email,
+              img: data.img,
             };
             axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
@@ -55,21 +56,21 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 via-purple-200 to-purple-300">
-      <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105">
-        <h2 className="text-3xl font-semibold text-center text-purple-600 mb-6 animate-fade-in">
-          Register
-        </h2>
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
+      style={{
+        backgroundImage: "url('https://i.ibb.co.com/8zTLDkg/fast-food-dish-blue-155003-27517.png')",
+      }}
+    >
+      {/* Background overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-transparent to-purple-900 opacity-70"></div>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-4 animate-fade-in"
-        >
+      <div className="relative flex flex-col w-full max-w-lg p-8 space-y-6 animate-fade-in rounded-lg shadow-lg bg-transparent backdrop-blur-sm">
+        <h2 className="text-4xl font-semibold text-center text-white mb-6">Sign Up</h2>
+        
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-600"
-            >
+            <label htmlFor="name" className="block text-sm font-medium text-white">
               Name
             </label>
             <input
@@ -77,18 +78,15 @@ const SignUp = () => {
               id="name"
               placeholder="Enter your name"
               {...register("name", { required: "Name is required" })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+              <p className="text-red-400 text-sm">{errors.name.message}</p>
             )}
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-600"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-white">
               Email
             </label>
             <input
@@ -96,18 +94,15 @@ const SignUp = () => {
               id="email"
               placeholder="Enter your email"
               {...register("email", { required: "Email is required" })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
+              <p className="text-red-400 text-sm">{errors.email.message}</p>
             )}
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-600"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-white">
               Password
             </label>
             <input
@@ -116,22 +111,17 @@ const SignUp = () => {
               placeholder="Enter your password"
               {...register("password", {
                 required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
+                minLength: { value: 6, message: "Password must be at least 6 characters" },
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out"
             />
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
+              <p className="text-red-400 text-sm">{errors.password.message}</p>
             )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Profile Image
-            </label>
+            <label className="block text-sm font-medium text-white">Profile Image</label>
             <input
               type="file"
               accept="image/*"
@@ -139,32 +129,31 @@ const SignUp = () => {
                 handleImageUpload(e);
                 register("profileImage").onChange(e);
               }}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md cursor-pointer focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md cursor-pointer bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out"
             />
             {image && (
               <div className="mt-4 flex justify-center">
-                <img
-                  src={image}
-                  alt="Preview"
-                  className="w-24 h-24 rounded-full shadow-lg"
-                />
+                <img src={image} alt="Preview" className="w-24 h-24 rounded-full shadow-lg" />
               </div>
             )}
           </div>
 
           <button
             type="submit"
-            className="w-full py-2 bg-purple-500 text-white rounded-md font-semibold hover:bg-purple-600 transform hover:scale-105 transition duration-300 ease-in-out"
+            className="w-full py-3 bg-purple-500 text-white rounded-md font-semibold transform transition duration-300 ease-in-out hover:bg-purple-600 hover:scale-105"
           >
             Sign Up
           </button>
         </form>
 
-        <SocialLogin />
+        <div className="my-6 text-center">
+          <p className="text-sm text-gray-200 mb-2 font-bold">--- Or sign up with ---</p>
+          <SocialLogin />
+        </div>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-gray-200">
           Already have an account?{" "}
-          <Link to={"/login"} className="text-purple-500 hover:underline">
+          <Link to={"/login"} className="text-blue-300 hover:underline">
             Log In
           </Link>
         </p>

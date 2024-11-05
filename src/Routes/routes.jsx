@@ -23,6 +23,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import BookTable from "../Pages/BookTable/BookTable";
 import MyBooking from "../MyBooking/MyBooking";
 import ManageBooking from "../ManageBooking/ManageBooking";
+import AddReview from "../AddReview/AddReview";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "addReview",
+        element: <AddReview></AddReview>,
       },
       {
         path: "userHome",

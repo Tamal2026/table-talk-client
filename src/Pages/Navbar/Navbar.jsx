@@ -1,73 +1,174 @@
 import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import UseCart from "../../UseCart/UseCart";
+import UseAdmin from "../../components/UseAdmin/UseAdmin";
 
 const Navbar = () => {
-  const [cart] = UseCart()
+  const [cart] = UseCart();
+
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isAdmin] = UseAdmin();
 
   const handleLogOut = () => {
-       logOut()
-      .then(() => {
-        navigate("/login"); 
-      })
-    
+    logOut().then(() => {
+      navigate("/login");
+    });
   };
 
-  // Show success message on login
   useEffect(() => {
     if (user) {
-     console.log(user)
+      console.log(user);
     }
   }, [user]);
 
   const navOptions = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "underline text-yellow-500" : "text-white"
+          }
+          style={({ isActive }) => ({
+            color: isActive ? "#FBBF24" : "#FFFFFF",
+          })}
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "underline text-yellow-500" : "text-white"
+          }
+          style={({ isActive }) => ({
+            color: isActive ? "#FBBF24" : "#FFFFFF",
+          })}
+        >
+          About
+        </NavLink>
       </li>
       <li>
-        <Link to="/services">Services</Link>
+        <NavLink
+          to="/services"
+          className={({ isActive }) =>
+            isActive ? "underline text-yellow-500" : "text-white"
+          }
+          style={({ isActive }) => ({
+            color: isActive ? "#FBBF24" : "#FFFFFF",
+          })}
+        >
+          Services
+        </NavLink>
       </li>
       <li>
-        <Link to="/ourMenu">Our Menu</Link>
+        <NavLink
+          to="/ourMenu"
+          className={({ isActive }) =>
+            isActive ? "underline text-yellow-500" : "text-white"
+          }
+          style={({ isActive }) => ({
+            color: isActive ? "#FBBF24" : "#FFFFFF",
+          })}
+        >
+          Our Menu
+        </NavLink>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            isActive ? "underline text-yellow-500" : "text-white"
+          }
+          style={({ isActive }) => ({
+            color: isActive ? "#FBBF24" : "#FFFFFF",
+          })}
+        >
+          Contact
+        </NavLink>
       </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/cart">Cart{cart.length}</Link>
-      </li>
+      {isAdmin && (
+        <li>
+          <NavLink
+            to="/dashboard/adminHome"
+            className={({ isActive }) =>
+              isActive ? "underline text-yellow-500" : "text-white"
+            }
+            style={({ isActive }) => ({
+              color: isActive ? "#FBBF24" : "#FFFFFF",
+            })}
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
+
+      {/* Conditionally render Dashboard and Cart links */}
+      {user?.email && !isAdmin && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard/cart"
+              className={({ isActive }) =>
+                isActive ? "underline text-yellow-500" : "text-white"
+              }
+              style={({ isActive }) => ({
+                color: isActive ? "#FBBF24" : "#FFFFFF",
+              })}
+            >
+              Cart {cart.length}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/userHome"
+              className={({ isActive }) =>
+                isActive ? "underline text-yellow-500" : "text-white"
+              }
+              style={({ isActive }) => ({
+                color: isActive ? "#FBBF24" : "#FFFFFF",
+              })}
+            >
+              Dashboard  
+            </NavLink>
+          </li>
+        </>
+      )}
 
       {user ? (
         <li>
-          <button className="btn btn-ghost" onClick={handleLogOut}>
+          <button onClick={handleLogOut} className="text-white">
             Logout
           </button>
         </li>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "underline text-yellow-500" : "text-white"
+            }
+            style={({ isActive }) => ({
+              color: isActive ? "#FBBF24" : "#FFFFFF",
+            })}
+          >
+            Login
+          </NavLink>
         </li>
       )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed top-0 w-full bg-black text-yellow-500 font-bold shadow-md duration-300 z-50">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Menu */}
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -82,17 +183,19 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
-          </div>
+          </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-black rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             {navOptions}
           </ul>
         </div>
 
         {/* Logo */}
-        <a className="btn btn-ghost normal-case text-xl">TaBLe TaLk</a>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          TaBLe TaLk
+        </Link>
       </div>
 
       {/* Desktop Menu */}

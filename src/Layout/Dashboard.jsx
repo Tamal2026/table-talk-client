@@ -58,17 +58,10 @@ const Dashboard = () => {
                   <FaShoppingCart className="text-lg" /> My Cart
                 </Link>
               </li>
+             
               <li>
                 <Link
-                  to="/dashboard/payment-history"
-                  className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
-                >
-                  <FaHistory className="text-lg" /> Payment History
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/add-review"
+                  to="/dashboard/addReview"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >
                   <FaStar className="text-lg" /> Add Review
@@ -99,7 +92,7 @@ const Dashboard = () => {
                   to="/dashboard/adminHome"
                   className="flex items-center gap-2 hover:bg-blue-600 p-2 rounded transition-colors duration-300"
                 >
-                  <FaHome className="text-lg" /> User Home
+                  <FaHome className="text-lg" /> Admin Home
                 </Link>
                 <Link
                   to="/dashboard/allUsers"

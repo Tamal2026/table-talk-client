@@ -10,10 +10,10 @@ const Hero = () => {
         backgroundColor: "transparent",
       }}
     >
-      <div className="Text-section bg-white/60 p-8 rounded-lg">
+      <div className="Text-section bg-white/40 p-8 rounded-lg">
         <div>
-          <h1 className="text-5xl font-bold">Enjoy Our</h1>
-          <h1 className="text-5xl font-bold">Delicious Meal</h1>
+          <h1 className="text-5xl font-bold text-gray-800">Enjoy Our</h1>
+          <h1 className="text-5xl font-bold text-gray-800">Delicious Meal</h1>
           <p className="text-lg mt-4">
             Experience flavors that inspire, crafted with passion <br /> and the
             freshest ingredients. Dine with us or <br /> enjoy from home—

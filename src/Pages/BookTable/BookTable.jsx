@@ -13,10 +13,10 @@ const BookTable = () => {
     date: "",
     time: "12:00 PM",
     guests: "0",
-    requests: "", // Special Requests field
+    requests: "", 
   };
   const [reservation, setReservation] = useState(initialReservation);
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +30,7 @@ const BookTable = () => {
       return;
     }
 
-    setLoading(true); // Start loading
+    setLoading(true); 
     const bookTableInfo = {
       name: user.displayName,
       email: user.email,
@@ -40,8 +40,7 @@ const BookTable = () => {
       requests: reservation.requests,
     };
 
-    axiosPublic
-      .post("/bookTable", bookTableInfo)
+    axiosPublic.post("/bookTable", bookTableInfo)
       .then((res) => {
         setLoading(false);
         if (res.data.insertedId) {
@@ -51,6 +50,7 @@ const BookTable = () => {
             showConfirmButton: false,
             timer: 4000,
           });
+          console.log(res.data)
           setReservation(initialReservation); 
         }
       })

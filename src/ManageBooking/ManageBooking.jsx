@@ -5,14 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 const ManageBooking = () => {
   const axiosSecure = UseAxiosSecure();
 
-  const { data: bookings = [],refetch } = useQuery({
+  const { data: bookings = [], refetch } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
       const res = await axiosSecure.get("/bookTable");
       return res.data;
     },
   });
-  const handleDelete = (bookingId) => {
+  const handleDelete = (booking) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -23,14 +23,14 @@ const ManageBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/bookTable/${bookingId}`).then((res) => {
+        axiosSecure.delete(`/bookTable/${booking._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: `${booking.name} is deleted from Bookings`, // Now it shows the booking name
               icon: "success",
             });
-            refetch()
+            refetch(); // Refresh the bookings list after deletion
           }
         });
       }
@@ -67,7 +67,10 @@ const ManageBooking = () => {
               </p>
 
               <div className="mt-4 flex justify-between items-center">
-                <button onClick={()=>handleDelete(booking._id)} className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
+                <button
+                  onClick={() => handleDelete(booking)}
+                  className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+                >
                   Delete
                 </button>
               </div>

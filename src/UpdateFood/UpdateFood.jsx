@@ -14,7 +14,6 @@ const UpdateFood = () => {
     category: "",
     short_desc: "",
     description: "",
-    img: null,
   });
 
   useEffect(() => {
@@ -25,26 +24,13 @@ const UpdateFood = () => {
         category: item.category || "",
         short_desc: item.short_desc || "",
         description: item.description || "",
-        img: null,
       });
     }
   }, [item]);
 
-  const [preview, setPreview] = useState("");
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData((prevData) => ({ ...prevData, img: file }));
-      setPreview(URL.createObjectURL(file));
-    } else {
-      setPreview("");
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -60,10 +46,6 @@ const UpdateFood = () => {
 
       if (formData.img) {
         submissionData.append("img", formData.img);
-      }
-
-      for (let pair of submissionData.entries()) {
-        console.log(pair[0], pair[1]);
       }
 
       const response = await axiosPublic.patch(
@@ -175,28 +157,6 @@ const UpdateFood = () => {
             className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transform transition-all duration-300 ease-in-out hover:bg-blue-50"
             rows="4"
           ></textarea>
-        </div>
-
-        {/* Image Upload */}
-        <div className="relative">
-          <label className="block text-gray-700 font-semibold mb-2">
-            Image
-          </label>
-          <input
-            type="file"
-            name="img"
-            onChange={handleImageChange}
-            className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transform transition-all duration-300 ease-in-out hover:bg-blue-50"
-          />
-          {preview && (
-            <div className="mt-4">
-              <img
-                src={preview}
-                alt="Selected"
-                className="w-32 h-32 object-cover rounded-lg shadow-md"
-              />
-            </div>
-          )}
         </div>
 
         {/* Submit Button */}

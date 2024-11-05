@@ -78,7 +78,7 @@ const AllUsers = () => {
               icon: "success",
             });
           }
-          refetch(); // Refetch users after delete
+          refetch(); 
         });
       }
     });
