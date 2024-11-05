@@ -86,7 +86,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "myBooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+         
+          
+            <MyBooking></MyBooking>
+       
+        ),
       },
 
       {

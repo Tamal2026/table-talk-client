@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 import UseAxiosPublic from "../UseAxiosPublic/UseAxiosPublic";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddReview = () => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
   const axiosPublic = UseAxiosPublic();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleStarClick = (index) => {
     setRating(index + 1);
@@ -34,6 +36,8 @@ const AddReview = () => {
           });
           setReview("");
           setRating(0);
+          navigate('/')
+
         } else {
           alert("Failed to submit the review. Please try again.");
         }

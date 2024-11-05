@@ -32,7 +32,7 @@ const SignUp = () => {
             };
             axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
-                navigate('/');
+                navigate("/");
               }
             });
           })
@@ -49,17 +49,23 @@ const SignUp = () => {
     <div
       className="flex items-center justify-center min-h-screen bg-cover bg-center relative px-4 sm:px-6 lg:px-8"
       style={{
-        backgroundImage: "url('https://i.ibb.co.com/8zTLDkg/fast-food-dish-blue-155003-27517.png')",
+        backgroundImage:
+          "url('https://i.ibb.co.com/8zTLDkg/fast-food-dish-blue-155003-27517.png')",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-transparent to-purple-900 opacity-70"></div>
 
       <div className="relative flex flex-col w-full max-w-lg p-6 sm:p-8 space-y-6 animate-fade-in rounded-lg shadow-lg bg-transparent backdrop-blur-sm">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-center text-white mb-4 sm:mb-6">Sign Up</h2>
-        
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center text-white mb-4 sm:mb-6">
+          Sign Up
+        </h2>
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-white"
+            >
               Name
             </label>
             <input
@@ -75,7 +81,10 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+            >
               Email
             </label>
             <input
@@ -91,7 +100,10 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
               Password
             </label>
             <input
@@ -100,7 +112,10 @@ const SignUp = () => {
               placeholder="Enter your password"
               {...register("password", {
                 required: "Password is required",
-                minLength: { value: 6, message: "Password must be at least 6 characters" },
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
               })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-300 ease-in-out"
             />
@@ -118,7 +133,9 @@ const SignUp = () => {
         </form>
 
         <div className="my-4 sm:my-6 text-center">
-          <p className="text-sm text-gray-200 mb-2 font-bold">--- Or sign up with ---</p>
+          <p className="text-sm text-gray-200 mb-2 font-bold">
+            --- Or sign up with ---
+          </p>
           <SocialLogin />
         </div>
 

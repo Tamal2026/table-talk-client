@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import { createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -21,51 +21,61 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const axiosPublic = UseAxiosPublic();
   const googleProvider = new GoogleAuthProvider();
+
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
+
+  const updateUserProfile = (name, photo) => {
+    if (!auth.currentUser) return Promise.reject("No user is logged in");
+
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    }).catch((error) => {
+      console.error("Error updating profile:", error);
+      return Promise.reject(error);
+    });
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) { 
-        const userInfo = {
-          email: currentUser.email
-        };
-        axiosPublic.post("/jwt", userInfo)
-        .then((res) => {
+
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
           }
           setLoading(false);
+        }).catch((error) => {
+          console.error("Error fetching token:", error);
+          setLoading(false);
         });
       } else {
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
-      setLoading(false);
     });
-    return () => {
-      return unSubscribe();
-    };
+    return () => unSubscribe();
   }, [axiosPublic]);
-  const updateUserProfile = (name, photo) => {
-    updateUserProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    });
-  };
 
   const authInfo = {
     user,
@@ -76,8 +86,11 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     googleSignIn,
   };
+
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

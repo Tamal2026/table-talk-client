@@ -48,6 +48,7 @@ const OurMenu = () => {
           />
         </div>
       </div>
+      <SectionTitle subHeading={"Best Food In The Town"}></SectionTitle>
 
       {Object.keys(menu).map((category) => (
         <div key={category} className="mb-8">

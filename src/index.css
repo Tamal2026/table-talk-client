@@ -5,3 +5,29 @@
 .imgGradient {
   background: linear-gradient(black black);
 }
+/* .img-fluid */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* .img-thumbnail */
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #F1F8FF;
+  border: 1px solid #dee2e6;
+  border-radius: 2px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* .figure */
+.figure {
+  display: inline-block;
+}
+
+/* .figure-img */
+.figure-img {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}

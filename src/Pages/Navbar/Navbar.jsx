@@ -163,7 +163,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar fixed top-0 w-full bg-black text-yellow-500 font-bold shadow-md duration-300 z-50">
+    <div className="navbar fixed top-0 max-w-screen-2xl  bg-black text-yellow-500 font-bold shadow-md duration-300 z-50">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Menu */}
@@ -194,7 +194,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          TaBLe TaLk
+          <img className="h-12 w-12"  src="https://i.ibb.co.com/vHVfwFk/logo.png" alt="" />
         </Link>
       </div>
 
