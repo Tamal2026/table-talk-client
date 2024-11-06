@@ -1,8 +1,20 @@
-# React + Vite
+## Key Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **User and Admin Dashboards:**
+  - Different dashboards for **User** and **Admin** using **JWT Authentication** for secure access.
+  - **Admin** can manage users, food menu, and bookings.
 
-Currently, two official plugins are available:
+- **Table Booking for Users:**
+  - Users can easily **book tables** for themselves with real-time availability checking.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Food Ordering System:**
+  - Users can **order food** directly from the menu.
+  - **Orders can only be placed** by logged-in users for secure transactions.
+
+- **Stripe Payment Integration:**
+  - Users can **pay** for their food securely via **Stripe** payment gateway.
+
+- **Recaptcha Security:**
+  - **Recaptcha** integrated to ensure users are **human** and not bots when placing orders or signing up.
+
+---
