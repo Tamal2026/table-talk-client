@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
 
-
 const Hero = () => {
   return (
     <div
-      className="flex max-w-screen-2xl items-center justify-around mt-10 h-[300px] sm:h-[300px] md:h-[600px]  lg:w-full bg-no-repeat bg-cover bg-center overflow-hidden"
+      className="flex max-w-screen-2xl items-center justify-around mt-10 h-[300px] sm:h-[300px] md:h-[600px] lg:w-full bg-no-repeat bg-cover bg-center overflow-hidden"
       style={{
-        backgroundImage: 'url("https://i.ibb.co.com/zPFJpsw/bg-hero.png")',
+        backgroundImage: 'url("https://i.ibb.co/zPFJpsw/bg-hero.png")',
         backgroundColor: "transparent",
       }}
     >
       {/* Card Section */}
       <div className="Text-section bg-white/40 p-2 sm:p-2 md:p-6 rounded-lg flex flex-col items-center sm:w-[50%] md:w-[30%] lg:w-max">
         <div className="text-center">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">Enjoy Our</h1>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">Delicious Meal</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
+            Enjoy Our
+          </h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
+            Delicious Meal
+          </h1>
           <p className="text-xs sm:text-sm md:text-base mt-2 sm:mt-4">
             Experience flavors that inspire, crafted with passion <br /> and the
-            freshest ingredients. Dine with us or <br /> enjoy from home—deliciousness awaits.
+            freshest ingredients. Dine with us or <br /> enjoy from
+            home—deliciousness awaits.
           </p>
         </div>
         <Link to={"/bookTable"}>
@@ -31,7 +35,12 @@ const Hero = () => {
       <div className="Image-Section">
         <img
           className="h-[150px] w-[150px] sm:h-[250px] sm:w-[250px] md:h-[400px] md:w-[400px] rounded-lg shadow-lg animate-spin-slow"
-          src="https://i.ibb.co.com/Nxs7C9L/hero-modified.png"
+          style={{
+            backgroundColor: "transparent",
+            overflowClipMargin: "content-box",
+            overflow: "clip",
+          }}
+          src="https://i.ibb.co/Nxs7C9L/hero-modified.png"
           alt="Delicious Meal"
         />
       </div>
