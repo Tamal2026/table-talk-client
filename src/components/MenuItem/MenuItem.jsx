@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import UseAxiosSecure from "../../UseAxiosSucure/UseAxiosSecure";
 import UseCart from "../../UseCart/UseCart";
+import UseAxiosPublic from "../../UseAxiosPublic/UseAxiosPublic";
 
 const MenuItem = ({ item }) => {
   const { img, price, name, short_desc, _id } = item;
@@ -15,6 +16,7 @@ const MenuItem = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = UseAxiosSecure();
+  const axiosPublic = UseAxiosPublic();
 
   const handleAddToCart = (food) => {
     if (user && user.email) {
@@ -25,27 +27,70 @@ const MenuItem = ({ item }) => {
         img,
         price,
       };
-      axiosSecure.post("/carts", cartItem).then((res) => {
-        if (res.data.insertedId) {
+
+      // Check if the item already exists in the cart
+      axiosSecure.get(`/carts?email=${user.email}`).then((res) => {
+        const existingItem = res.data.find((item) => item.menuId === _id);
+
+        if (existingItem) {
           Swal.fire({
-            icon: "success",
-            title: `<span style="color: #3085d6;">${name}</span> added to your cart!`,
-            imageUrl: img,
-            imageAlt: "Product image",
-            imageWidth: 200,
-            imageHeight: 200,
+            position: "top-end",
+            icon: "warning",
+            title: "Already in the cart order more go to cart",
             showConfirmButton: false,
-            timer: 2000,
-            customClass: {
-              image: "swal-image-round",
-              popup: "swal-popup-animated",
-              title: "swal-title-decorated",
-            },
-            background: "#f9f9f9",
-            timerProgressBar: true,
+            timer: 1500
           });
 
-          refetch();
+          // Update the cart item
+          axiosSecure
+            .patch(`/carts/${existingItem._id}`)
+            .then((updateRes) => {
+              if (updateRes.data.modifiedCount > 0) {
+                Swal.fire({
+                  icon: "info",
+                  title: `<span style="color: #3085d6;">${name}</span> is already in your cart!`,
+                  text: "Quantity has been increased by one.",
+                  imageUrl: img,
+                  imageAlt: "Product image",
+                  imageWidth: 200,
+                  imageHeight: 200,
+                  showConfirmButton: false,
+                  timer: 2000,
+                  customClass: {
+                    image: "swal-image-round",
+                    popup: "swal-popup-animated",
+                    title: "swal-title-decorated",
+                  },
+                  background: "#f9f9f9",
+                  timerProgressBar: true,
+                });
+                refetch();
+              }
+            });
+        } else {
+          // If item doesn't exist, add it to the cart
+          axiosSecure.post("/carts", cartItem).then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                icon: "success",
+                title: `<span style="color: #3085d6;">${name}</span> added to your cart!`,
+                imageUrl: img,
+                imageAlt: "Product image",
+                imageWidth: 200,
+                imageHeight: 200,
+                showConfirmButton: false,
+                timer: 2000,
+                customClass: {
+                  image: "swal-image-round",
+                  popup: "swal-popup-animated",
+                  title: "swal-title-decorated",
+                },
+                background: "#f9f9f9",
+                timerProgressBar: true,
+              });
+              refetch();
+            }
+          });
         }
       });
     } else {
@@ -65,6 +110,10 @@ const MenuItem = ({ item }) => {
     }
   };
 
+  const handleDetails = (id) => {
+    navigate(`/menu/${id}`);
+  };
+
   return (
     <div className="flex flex-col md:flex-row items-center gap-4 p-4 border-b border-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105">
       {/* Image Section */}
@@ -80,7 +129,10 @@ const MenuItem = ({ item }) => {
           Price: ${price}
         </h2>
 
-        <button className="bg-blue-500 text-white font-semibold py-2 px-4 sm:px-6 sm:py-3 rounded-lg shadow-md hover:bg-green-500 transition-colors duration-300 w-full md:w-auto text-sm sm:text-base">
+        <button
+          onClick={() => handleDetails(_id)}
+          className="bg-blue-500 text-white font-semibold py-2 px-4 sm:px-6 sm:py-3 rounded-lg shadow-md hover:bg-green-500 transition-colors duration-300 w-full md:w-auto text-sm sm:text-base"
+        >
           Details
         </button>
       </div>

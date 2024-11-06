@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { FaTrash } from "react-icons/fa";
+import { FaHome, FaTrash } from "react-icons/fa";
 import UseAxiosSecure from "../../UseAxiosPublic/UseAxiosPublic";
 import { GrUserAdmin } from "react-icons/gr";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const AllUsers = () => {
   const axiosSecure = UseAxiosSecure();
@@ -11,15 +12,13 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const token  = localStorage.getItem("access-token")
+      const token = localStorage.getItem("access-token");
       try {
-
-        
         const res = await axiosSecure.get("/users", {
           headers: {
-            authorization: `Bearer ${token}`, 
+            authorization: `Bearer ${token}`,
           },
-        })
+        });
         return res.data;
       } catch (err) {
         console.error(
@@ -36,7 +35,7 @@ const AllUsers = () => {
     axiosSecure
       .patch(`/users/${user._id}`)
       .then((res) => {
-        console.log(res.data);
+        console.log("Admin update response:", res.data);
         if (res.data.modifiedCount > 0) {
           Swal.fire({
             position: "top-end",
@@ -45,7 +44,7 @@ const AllUsers = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          refetch(); 
+          refetch();
         }
       })
       .catch((error) => {
@@ -58,7 +57,6 @@ const AllUsers = () => {
       });
   };
 
-  // Handle user deletion
   const handleDelete = (userId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -74,33 +72,36 @@ const AllUsers = () => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: "User has been deleted.",
               icon: "success",
             });
           }
-          refetch(); 
+          refetch();
         });
       }
     });
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 bg-white dark:bg-gray-800 dark:text-gray-200 rounded-lg shadow-lg">
+      <div className="flex gap-10 mb-4">
       <h2 className="text-2xl font-semibold mb-4">
-        All Users <span className="text-gray-600">({users.length})</span>
+        All Users <span className="text-gray-600 dark:text-gray-400">({users.length})</span>
       </h2>
+      <Link to={"/dashboard/adminHome"}><button className="btn text-white bg-green-500 flex items-center"><FaHome></FaHome><h1>Back to Dashboard</h1></button></Link>
+      </div>
       <table className="w-full table-auto border-collapse">
         <thead>
-          <tr className="bg-gray-200 text-left">
-            <th className="p-4 border-b">Name</th>
-            <th className="p-4 border-b">Email</th>
-            <th className="p-4 border-b">Role</th>
-            <th className="p-4 border-b text-center">Action</th>
+          <tr className="bg-gray-200 dark:bg-gray-700 text-left">
+            <th className="p-4 border-b dark:border-gray-600">Name</th>
+            <th className="p-4 border-b dark:border-gray-600">Email</th>
+            <th className="p-4 border-b dark:border-gray-600">Role</th>
+            <th className="p-4 border-b dark:border-gray-600 text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user._id} className="border-b py-2">
+            <tr key={user._id} className="border-b dark:border-gray-600 py-2">
               <td className="p-2">
                 <div className="flex flex-col items-start">
                   <span className="font-medium">{user.name}</span>
@@ -119,7 +120,7 @@ const AllUsers = () => {
                     onClick={() => handleMakeAdmin(user)}
                     className="flex flex-col items-start"
                   >
-                    <span className="text-md p-2 rounded-lg bg-blue-600 text-white">
+                    <span className="text-md p-2 rounded-lg bg-blue-600 dark:bg-blue-500 text-white">
                       {user.role || <GrUserAdmin />}
                     </span>
                   </button>
@@ -128,7 +129,7 @@ const AllUsers = () => {
               <td className="p-2 text-center">
                 <button
                   onClick={() => handleDelete(user._id)}
-                  className="text-red-500 hover:text-red-700"
+                  className="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
                 >
                   <FaTrash />
                 </button>

@@ -189,7 +189,7 @@ const CheckOutForm = () => {
         disabled={!stripe || !clientSecret}
         className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors"
       >
-        Pay ${totalPrice}
+        Pay ${totalPrice.toFixed(2)}
       </button>
       <p className="text-red-500">{error}</p>
     </form>

@@ -60,15 +60,18 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         const userInfo = { email: currentUser.email };
-        axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
-          }
-          setLoading(false);
-        }).catch((error) => {
-          console.error("Error fetching token:", error);
-          setLoading(false);
-        });
+        axiosPublic
+          .post("/jwt", userInfo)
+          .then((res) => {
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+              setLoading(false);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching token:", error);
+            setLoading(false);
+          });
       } else {
         localStorage.removeItem("access-token");
         setLoading(false);
@@ -88,9 +91,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

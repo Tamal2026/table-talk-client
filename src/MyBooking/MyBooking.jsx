@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import UseAxiosPublic from "../UseAxiosPublic/UseAxiosPublic";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import Swal from "sweetalert2"; // Import SweetAlert
 
 const MyBooking = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,32 +23,55 @@ const MyBooking = () => {
   }, [axiosSecure, user?.email]);
 
   const handleDelete = (item) => {
-    axiosPublic
-      .delete(`/myBooking/${item._id}`)
-      .then((res) => {
-        console.log("Delete response:", res.data); // Log the response
-        if (res.data.deletedCount > 0) {
-          // Check for deletedCount in the response
-          // Update state to remove the deleted booking
-          setBooking((prevBookings) =>
-            prevBookings.filter((bookingItem) => bookingItem._id !== item._id)
-          );
-        } else {
-          console.error("No booking was deleted."); // Log if no booking was deleted
-        }
-      })
-      .catch((err) => {
-        console.error("Error deleting booking:", err);
-      });
+    // Show confirmation before deleting
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Proceed with the deletion
+        axiosPublic
+          .delete(`/bookTable/${item._id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              // Show success alert
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your booking has been deleted.",
+                icon: "success",
+              });
+
+              // Update the bookings state to remove the deleted booking
+              setBooking((prevBookings) =>
+                prevBookings.filter(
+                  (bookingItem) => bookingItem._id !== item._id
+                )
+              );
+            } else {
+              console.error("No booking was deleted.");
+            }
+          })
+          .catch((err) => {
+            console.error("Error deleting booking:", err);
+          });
+      }
+    });
   };
 
   return (
     <div className="flex flex-col items-center space-y-4 mt-8">
       <h1 className="text-2xl font-semibold mb-4">My Bookings</h1>
-      <Link to={'/'}><button className="btn flex items-center">
-        <FaHome></FaHome>
-        <h1>Back to Home</h1>
-        </button></Link>
+      <Link to={"/dashboard/userHome"}>
+        <button className="btn text-white bg-green-500 flex items-center">
+          <FaHome></FaHome>
+          <h1>Back to Dashboard</h1>
+        </button>
+      </Link>
       {userloading && (
         <span className="loading loading-spinner loading-lg"></span>
       )}
@@ -73,7 +97,7 @@ const MyBooking = () => {
                 </p>
                 <div className="card-actions justify-end">
                   <button
-                    onClick={() => handleDelete(bookingItem)} // Pass the correct item
+                    onClick={() => handleDelete(bookingItem)}
                     className="btn bg-red-600 text-white mt-4 font-bold"
                   >
                     Delete Booking

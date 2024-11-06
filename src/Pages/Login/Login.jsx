@@ -1,13 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
 import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLogin from "../../SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaInput, setCaptchaInput] = useState("");
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const { signIn } = useContext(AuthContext);
@@ -15,38 +22,50 @@ const Login = () => {
   const from = location.state?.from || "/";
 
   useEffect(() => {
-    loadCaptchaEnginge(5); 
+    loadCaptchaEnginge(5);
   }, []);
 
   const handleValidateCaptcha = () => {
     if (validateCaptcha(captchaInput)) {
       setIsCaptchaValid(true);
     } else {
-      alert("Invalid CAPTCHA. Please try again.");
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please provide valid captcha!",
+        showConfirmButton: false,
+        timer: 1500
+      });
       setIsCaptchaValid(false);
     }
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-
     if (isCaptchaValid) {
       signIn(email, password)
-        .then(result => {
+        .then((result) => {
           const user = result.user;
-          console.log(user);
-          setErrorMessage(''); 
+          setErrorMessage("");
           navigate(from, { replace: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Login error:", error);
-          setErrorMessage("Login failed. Please check your email and password."); 
+          setErrorMessage("Login failed. Please check your email and password.");
         });
     } else {
       alert("Please validate the CAPTCHA before logging in.");
+    }
+  };
+
+  // Demo user email and password
+  const handleDemoLogin = (type) => {
+    if (type === "user") {
+      setEmail("user@gmail.com");
+      setPassword("111111");
+    } else if (type === "admin") {
+      setEmail("admin@gmail.com");
+      setPassword("admin123");
     }
   };
 
@@ -57,14 +76,18 @@ const Login = () => {
         backgroundImage: "url('https://i.ibb.co.com/M2rWr8R/login.jpg')",
       }}
     >
-   
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
 
       <div className="relative flex flex-col w-full max-w-lg p-12 space-y-6 animate-fade-in rounded-lg shadow-lg bg-transparent backdrop-blur-sm">
-        <h2 className="text-4xl font-semibold text-center text-white mb-8">Login</h2>
+        <h2 className="text-4xl font-semibold text-center text-white mb-8">
+          Login
+        </h2>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+            >
               Email
             </label>
             <input
@@ -73,10 +96,15 @@ const Login = () => {
               name="email"
               placeholder="Enter your email"
               className="w-full px-4 py-3 border border-gray-200 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 ease-in-out"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
               Password
             </label>
             <input
@@ -85,6 +113,8 @@ const Login = () => {
               name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 border border-gray-200 rounded-md bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 ease-in-out"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -116,7 +146,9 @@ const Login = () => {
           <button
             type="submit"
             className={`w-full py-3 text-white rounded-md font-semibold transform transition duration-300 ease-in-out ${
-              isCaptchaValid ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'
+              isCaptchaValid
+                ? "bg-blue-500 hover:bg-blue-600"
+                : "bg-gray-400 cursor-not-allowed"
             }`}
             disabled={!isCaptchaValid}
           >
@@ -124,9 +156,27 @@ const Login = () => {
           </button>
         </form>
 
+        {/* Demo Login Buttons */}
+        <div className="flex justify-between space-x-4 mt-4">
+          <button
+            onClick={() => handleDemoLogin("user")}
+            className="w-full py-3 bg-teal-600 text-white  rounded-md font-semibold hover:bg-gray-400 transform transition duration-300 ease-in-out"
+          >
+            User Demo
+          </button>
+          <button
+            onClick={() => handleDemoLogin("admin")}
+            className="w-full py-3 bg-cyan-600 text-white rounded-md font-semibold hover:bg-gray-900 transform transition duration-300 ease-in-out"
+          >
+            Admin Demo
+          </button>
+        </div>
+
         {/* Social login section */}
         <div className="my-6 text-center">
-          <p className="text-sm text-gray-200 mb-2 font-bold">--- Or login with ---</p>
+          <p className="text-sm text-gray-200 mb-2 font-bold">
+            --- Or login with ---
+          </p>
           <SocialLogin />
         </div>
 

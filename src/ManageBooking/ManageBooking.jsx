@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../UseAxiosSucure/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 const ManageBooking = () => {
   const axiosSecure = UseAxiosSecure();
@@ -27,10 +29,10 @@ const ManageBooking = () => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: `${booking.name} is deleted from Bookings`, // Now it shows the booking name
+              text: `${booking.name} is deleted from Bookings`,
               icon: "success",
             });
-            refetch(); // Refresh the bookings list after deletion
+            refetch();
           }
         });
       }
@@ -39,7 +41,10 @@ const ManageBooking = () => {
 
   return (
     <div className="p-6">
+      <div className="flex items-center gap-12">
       <h1 className="text-3xl font-bold mb-4">Manage Bookings</h1>
+      <Link to={"/dashboard/adminHome"}><button className="btn text-white bg-green-500 flex items-center"><FaHome></FaHome><h1>Back to Dashboard</h1></button></Link>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {bookings.length > 0 ? (

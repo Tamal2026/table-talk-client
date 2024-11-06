@@ -13,13 +13,10 @@ const Services = () => {
       >
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-    
-      
       </Cover>
 
       {/* Service Section */}
-      <div className="service-container py-10 px-5 bg-gray-100 max-w-screen-2xl mx-auto">
+      <div className="service-container py-10 px-5 bg-gray-100 dark:bg-gray-800 max-w-screen-2xl mx-auto">
         <SectionTitle
           subHeading="Our Services"
           heading="Explore Our Service"
@@ -27,28 +24,28 @@ const Services = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Individual Service Cards */}
-          <div className="service-item p-6 bg-white shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out">
+          <div className="service-item p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white dark:hover:bg-orange-500 transition-all duration-300 ease-in-out">
             <div className="text-4xl mb-4">👨‍🍳</div>
-            <h2 className="text-xl font-semibold mb-2">MASTER CHEFS</h2>
-            <p>Our master chefs are renowned for their culinary skills and creativity in the kitchen.</p>
+            <h2 className="text-xl font-semibold mb-2 dark:text-white">MASTER CHEFS</h2>
+            <p className="dark:text-gray-300">Our master chefs are renowned for their culinary skills and creativity in the kitchen.</p>
           </div>
 
-          <div className="service-item p-6 bg-white shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out">
+          <div className="service-item p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white dark:hover:bg-orange-500 transition-all duration-300 ease-in-out">
             <div className="text-4xl mb-4">🍽️</div>
-            <h2 className="text-xl font-semibold mb-2">QUALITY FOOD</h2>
-            <p>We use only the finest ingredients to ensure the best quality in every dish we serve.</p>
+            <h2 className="text-xl font-semibold mb-2 dark:text-white">QUALITY FOOD</h2>
+            <p className="dark:text-gray-300">We use only the finest ingredients to ensure the best quality in every dish we serve.</p>
           </div>
 
-          <div className="service-item p-6 bg-white shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out">
+          <div className="service-item p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white dark:hover:bg-orange-500 transition-all duration-300 ease-in-out">
             <div className="text-4xl mb-4">📱</div>
-            <h2 className="text-xl font-semibold mb-2">ONLINE ORDER</h2>
-            <p>Convenient online ordering system for you to place orders from the comfort of your home.</p>
+            <h2 className="text-xl font-semibold mb-2 dark:text-white">ONLINE ORDER</h2>
+            <p className="dark:text-gray-300">Convenient online ordering system for you to place orders from the comfort of your home.</p>
           </div>
 
-          <div className="service-item p-6 bg-white shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out">
+          <div className="service-item p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg text-center transform hover:scale-105 hover:bg-orange-400 hover:text-white dark:hover:bg-orange-500 transition-all duration-300 ease-in-out">
             <div className="text-4xl mb-4">⏰</div>
-            <h2 className="text-xl font-semibold mb-2">24/7 SERVICE</h2>
-            <p>We are available around the clock to serve you whenever you need us.</p>
+            <h2 className="text-xl font-semibold mb-2 dark:text-white">24/7 SERVICE</h2>
+            <p className="dark:text-gray-300">We are available around the clock to serve you whenever you need us.</p>
           </div>
         </div>
       </div>

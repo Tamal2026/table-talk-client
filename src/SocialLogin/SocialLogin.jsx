@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const SocialLogin = () => {
   const { googleSignIn } = useContext(AuthContext);
   const axiosPublic = UseAxiosPublic();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -16,8 +16,7 @@ const SocialLogin = () => {
         email: result.user?.email,
       };
       axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        navigate('/')
+        navigate("/");
       });
     });
   };

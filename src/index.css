@@ -31,3 +31,46 @@
   margin-bottom: 0.5rem;
   line-height: 1;
 }
+
+/* Custom media query for devices with width 425px (will also apply to 479px) */
+@media screen and (max-width: 425px) {
+  .cart-container {
+    padding: 12px; /* Adjust padding for mobile */
+  }
+
+  .cart-item {
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .cart-item img {
+    width: 50px; /* Smaller image size on mobile */
+    height: 50px;
+  }
+
+  .cart-item .item-details {
+    font-size: 14px; /* Smaller text size */
+  }
+
+  .cart-item .quantity-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .cart-item .quantity-buttons button {
+    font-size: 20px; /* Larger buttons for ease of interaction */
+  }
+
+  .cart-item .total-price {
+    font-size: 16px; /* Adjust price font size */
+  }
+
+  .cart-item .delete-btn {
+    font-size: 18px; /* Adjust delete icon size */
+  }
+
+  .pay-button {
+    width: 100%; /* Full width for the pay button on mobile */
+    font-size: 18px; /* Larger text size for easier tap interaction */
+  }
+}

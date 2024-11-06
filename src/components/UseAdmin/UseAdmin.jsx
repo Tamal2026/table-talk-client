@@ -4,19 +4,25 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import UseAxiosSecure from "../../UseAxiosSucure/UseAxiosSecure";
 
 const UseAdmin = () => {
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const axiosSecure = UseAxiosSecure();
+
   const { data: isAdmin = false, isLoading } = useQuery({
-    enabled: !!user?.email,
+
     queryKey: [user?.email, "isAdmin"],
+   enabled: !loading && !!user?.email,
     queryFn: async () => {
       if (!user?.email) return false;
       try {
         const res = await axiosSecure.get(`/users/${user.email}`);
-        console.log("Admin status:", res.data.admin);
+
         return res.data?.admin;
       } catch (error) {
-        if (error.response && error.response.status === 403) {
+        console.error("Error fetching admin status:", error);
+        if (
+          error.response &&
+          (error.response.status === 401 || error.response.status === 403)
+        ) {
           console.error("Unauthorized access");
         }
         return false;
@@ -24,6 +30,9 @@ const UseAdmin = () => {
     },
   });
 
+  // Additional logging for debugging purposes
+
   return [isAdmin, isLoading];
 };
+
 export default UseAdmin;

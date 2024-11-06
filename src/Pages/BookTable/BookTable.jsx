@@ -50,7 +50,6 @@ const BookTable = () => {
             showConfirmButton: false,
             timer: 4000,
           });
-          console.log(res.data)
           setReservation(initialReservation); 
         }
       })

@@ -15,5 +15,9 @@ export default {
       },
     },
   },
+  darkMode: 'class', // Enable dark mode via class instead of media query
   plugins: [daisyui],
+  daisyui: {
+    themes: ["light", "dark"], // Optionally use DaisyUI's themes
+  },
 };

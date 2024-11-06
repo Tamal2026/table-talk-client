@@ -18,11 +18,11 @@ import Payment from "../Payment/Payment";
 import PaymentHistory from "../PaymentHistory/PaymentHistory";
 import UserHome from "../UserHome/UserHome";
 import AdminHome from "../AdminHome/AdminHome";
-import AdminRoute from "../AdminRoute/AdminRoute";
 import BookTable from "../Pages/BookTable/BookTable";
 import MyBooking from "../MyBooking/MyBooking";
 import ManageBooking from "../ManageBooking/ManageBooking";
 import AddReview from "../AddReview/AddReview";
+import MenuItemDetails from "../MenuItemDetails/MenuItemDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/menu/:id",
+        element: <MenuItemDetails></MenuItemDetails>,
       },
       {
         path: "/ourMenu",
@@ -86,12 +90,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myBooking",
-        element: (
-         
-          
-            <MyBooking></MyBooking>
-       
-        ),
+        element: <MyBooking></MyBooking>,
       },
 
       {
@@ -107,53 +106,28 @@ export const router = createBrowserRouter([
 
       {
         path: "addFood",
-        element: (
-          <AdminRoute>
-            <AddFood></AddFood>
-          </AdminRoute>
-        ),
+        element: <AddFood></AddFood>,
       },
 
       {
         path: "allUsers",
-        element: (
-          <AdminRoute>
-            {" "}
-            <AllUsers></AllUsers>
-          </AdminRoute>
-        ),
+        element: <AllUsers></AllUsers>,
       },
       {
         path: "adminHome",
-        element: (
-          <AdminRoute>
-            <AdminHome></AdminHome>
-          </AdminRoute>
-        ),
+        element: <AdminHome></AdminHome>,
       },
       {
         path: "manageFood",
-        element: (
-          <AdminRoute>
-            <ManageFood></ManageFood>
-          </AdminRoute>
-        ),
+        element: <ManageFood></ManageFood>,
       },
       {
         path: "manageBooking",
-        element: (
-          <AdminRoute>
-            <ManageBooking></ManageBooking>
-          </AdminRoute>
-        ),
+        element: <ManageBooking></ManageBooking>,
       },
       {
         path: "updateFood/:id",
-        element: (
-          <AdminRoute>
-            <UpdateFood></UpdateFood>
-          </AdminRoute>
-        ),
+        element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/menu/${params.id}`),
       },

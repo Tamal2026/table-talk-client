@@ -20,7 +20,6 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log("User created:", loggedUser);
 
         updateProfile(loggedUser, {
           displayName: data.name,

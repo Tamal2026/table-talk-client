@@ -2,17 +2,23 @@ import { FaEnvelope } from "react-icons/fa";
 import Cover from "../Shared/Cover/Cover";
 
 const Contact = () => {
-
   return (
     <>
-      <Cover img={"https://i.ibb.co.com/gR2bDjY/contact-us.jpg"} titleName={"Contact Us"}short_desc={"Welcome to Table Talk! Enjoy fresh, chef-crafted dishes that blend tradition with modern flavors. Dine in, order online, or reserve a table – we’re here to make every meal memorable!"}></Cover>
-      <section className="bg-gray-100 py-16">
+      <Cover 
+        img={"https://i.ibb.co.com/gR2bDjY/contact-us.jpg"} 
+        titleName={"Contact Us"}
+        short_desc={
+          "Welcome to Table Talk! Enjoy fresh, chef-crafted dishes that blend tradition with modern flavors. Dine in, order online, or reserve a table – we’re here to make every meal memorable!"
+        }
+      ></Cover>
+      
+      <section className="bg-gray-100 dark:bg-gray-900 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4 animate-fadeIn">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 animate-fadeIn">
               Get in Touch
             </h2>
-            <p className="text-lg text-gray-600 animate-fadeIn delay-100">
+            <p className="text-lg text-gray-600 dark:text-gray-400 animate-fadeIn delay-100">
               Whether you need help with booking, have general inquiries, or
               need technical support, we're here to help!
             </p>
@@ -20,37 +26,37 @@ const Contact = () => {
 
           <div className="flex flex-wrap justify-center -mx-4 mb-12">
             <div className="w-full md:w-1/3 px-4 mb-8 animate-slideInLeft">
-              <div className=" flex items-center transform transition duration-500 hover:scale-105">
+              <div className="flex items-center transform transition duration-500 hover:scale-105">
                 <FaEnvelope className="text-yellow-500 text-4xl mr-4" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
                     Booking
                   </h3>
-                  <p className="text-gray-600">booking@fooddelivery.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">booking@fooddelivery.com</p>
                 </div>
               </div>
             </div>
 
             <div className="w-full md:w-1/3 px-4 mb-8 animate-fadeIn delay-200">
-              <div className=" flex items-center transform transition duration-500 hover:scale-105">
+              <div className="flex items-center transform transition duration-500 hover:scale-105">
                 <FaEnvelope className="text-green-500 text-4xl mr-4" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
                     General
                   </h3>
-                  <p className="text-gray-600">general@fooddelivery.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">general@fooddelivery.com</p>
                 </div>
               </div>
             </div>
 
             <div className="w-full md:w-1/3 px-4 mb-8 animate-slideInRight delay-400">
-              <div className=" flex items-center transform transition duration-500 hover:scale-105">
+              <div className="flex items-center transform transition duration-500 hover:scale-105">
                 <FaEnvelope className="text-sky-500 text-4xl mr-4" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
                     Technical
                   </h3>
-                  <p className="text-gray-600">technical@fooddelivery.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">technical@fooddelivery.com</p>
                 </div>
               </div>
             </div>
@@ -58,11 +64,11 @@ const Contact = () => {
 
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0 animate-slideInLeft">
-              <div className="bg-white p-8 shadow-lg rounded-lg transform transition duration-500 hover:scale-105">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              <div className="bg-white dark:bg-gray-800 p-8 shadow-lg rounded-lg transform transition duration-500 hover:scale-105">
+                <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
                   Contact Information
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   Phone: +1 234 567 890 <br />
                   Email: contact@fooddelivery.com <br />
                   Address: 123 Food Street, Delicious City, FL
@@ -77,20 +83,20 @@ const Contact = () => {
             </div>
 
             <div className="w-full md:w-1/2 px-4 animate-slideInRight">
-              <div className="bg-white p-8 shadow-lg rounded-lg transform transition duration-500 hover:scale-105">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              <div className="bg-white dark:bg-gray-800 p-8 shadow-lg rounded-lg transform transition duration-500 hover:scale-105">
+                <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
                   Send Us a Message
                 </h3>
                 <form>
                   <div className="mb-4">
                     <label
-                      className="block text-gray-700 font-bold mb-2"
+                      className="block text-gray-700 dark:text-gray-300 font-bold mb-2"
                       htmlFor="name"
                     >
                       Name
                     </label>
                     <input
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:border-yellow-500 dark:focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
                       type="text"
                       id="name"
                       placeholder="Your Name"
@@ -98,13 +104,13 @@ const Contact = () => {
                   </div>
                   <div className="mb-4">
                     <label
-                      className="block text-gray-700 font-bold mb-2"
+                      className="block text-gray-700 dark:text-gray-300 font-bold mb-2"
                       htmlFor="email"
                     >
                       Email
                     </label>
                     <input
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:border-yellow-500 dark:focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
                       type="email"
                       id="email"
                       placeholder="Your Email"
@@ -112,13 +118,13 @@ const Contact = () => {
                   </div>
                   <div className="mb-4">
                     <label
-                      className="block text-gray-700 font-bold mb-2"
+                      className="block text-gray-700 dark:text-gray-300 font-bold mb-2"
                       htmlFor="message"
                     >
                       Message
                     </label>
                     <textarea
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:border-yellow-500 dark:focus:border-yellow-500 focus:ring focus:ring-yellow-200 transition duration-200 hover:shadow-lg"
                       id="message"
                       rows="5"
                       placeholder="Your Message"

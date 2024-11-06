@@ -1,6 +1,6 @@
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import Cover from "../Pages/Shared/Cover/Cover";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaHome, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../UseAxiosSucure/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -50,6 +50,12 @@ const ManageFood = () => {
           "View, update, and manage all food items in the restaurant menu, ensuring accurate information and seamless control over available offerings"
         }
       />
+      <Link to={"/dashboard/adminHome"}>
+        <button className="flex items-center text-white bg-blue-600 btn mx-auto my-3">
+          <FaHome></FaHome>
+          <h1>Back to dashboard</h1>
+        </button>
+      </Link>
       <div className="mt-4">
         <SectionTitle
           subHeading={"ADD FOOD"}
@@ -94,10 +100,7 @@ const ManageFood = () => {
                 <td>{item.price}</td>
                 <td>
                   <Link to={`/dashboard/updateFood/${item._id}`}>
-                     <button
-                    
-                      className="bg-blue-500 text-white text-center px-3 text-lg py-2 rounded-lg"
-                    >
+                    <button className="bg-blue-500 text-white text-center px-3 text-lg py-2 rounded-lg">
                       <FaEdit></FaEdit>
                     </button>
                   </Link>

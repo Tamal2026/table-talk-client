@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import useAdmin from "../components/UseAdmin/UseAdmin";  
+import useAdmin from "../components/UseAdmin/UseAdmin";
 import { Navigate, useLocation } from "react-router-dom";
 
 const AdminRoute = ({ children }) => {
@@ -18,11 +18,13 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && isAdmin) {
+ 
+
+  if (user?.email && isAdmin) {
     return children;
   }
 
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate to="/" state={{ from: location }} replace />;
 };
 
 export default AdminRoute;

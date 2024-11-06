@@ -2,6 +2,8 @@ import { useState } from "react";
 import useAxiosPublic from "../UseAxiosPublic/UseAxiosPublic";
 import useAxiosSecure from "../UseAxiosSucure/UseAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -14,7 +16,7 @@ const AddFood = () => {
     short_desc: "",
     description: "",
     imageUrl: "",
-    imageFile: null,
+    mageFile: null,
   });
 
   const axiosPublic = useAxiosPublic();
@@ -71,7 +73,7 @@ const AddFood = () => {
         if (menuRes.data.insertedId) {
           Swal.fire({
             icon: "success",
-            title: "Your work has been saved",
+            title: "Food added to menu",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -109,7 +111,6 @@ const AddFood = () => {
           Add New Food Item
         </h2>
 
- 
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Name
         </label>
@@ -126,7 +127,7 @@ const AddFood = () => {
           Category
         </label>
         <select
-          name="category" 
+          name="category"
           value={formData.category}
           onChange={handleChange}
           className="w-full px-4 py-2 mb-4 border  border-gray-300 rounded-md bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300 transform hover:scale-105 focus:scale-105 appearance-none"
@@ -142,7 +143,6 @@ const AddFood = () => {
           <option className="bg-black bg-opacity-40 text-white">Dessert</option>
           <option className="bg-black bg-opacity-40 text-white">Drinks</option>
         </select>
-
 
         <label className="block mb-2 text-sm font-medium text-gray-200">
           Price
@@ -209,6 +209,12 @@ const AddFood = () => {
         >
           Add Food Item
         </button>
+        <Link to={"/dashboard/adminHome"}>
+          <button className="btn btn-ghost mx-auto mt-5 text-white bg-green-500 flex items-center">
+            <FaHome></FaHome>
+            <h1>Back to Dashboard</h1>
+          </button>
+        </Link>
       </form>
     </div>
   );
